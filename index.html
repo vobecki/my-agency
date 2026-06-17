@@ -1,180 +1,1112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isaac's Agency | Web Design & Development</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
-        .soft-ring { box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10); }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Isaac's Agency | Web Design for Kenyan Businesses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #0D1117;
+      --navy:    #0F2240;
+      --blue:    #1A56DB;
+      --sky:     #3B82F6;
+      --accent:  #F59E0B;
+      --white:   #FFFFFF;
+      --offwhite:#F8F9FC;
+      --mist:    #E9EDF5;
+      --gray:    #64748B;
+      --lgray:   #CBD5E1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--offwhite);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      background: rgba(15,34,64,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: var(--ink) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 3px;
+      font-weight: 700 !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 5%;
+      padding-top: 64px;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Signature element: diagonal grid lines in background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.3);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      color: #94A3B8;
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-accent {
+      background: var(--accent);
+      color: var(--ink);
+      padding: 0.85rem 1.8rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-accent:hover { background: #D97706; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
+
+    /* Hero right — live demo card */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .demo-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .demo-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1.2rem;
+    }
+
+    .demo-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .demo-dot:nth-child(1) { background: #FF5F57; }
+    .demo-dot:nth-child(2) { background: #FEBC2E; }
+    .demo-dot:nth-child(3) { background: #28C840; }
+
+    .demo-url {
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.72rem;
+      color: #64748B;
+      margin-bottom: 1.5rem;
+      font-family: monospace;
+    }
+
+    .demo-site-preview {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .demo-site-header {
+      background: #1C2B3A;
+      padding: 0.6rem 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .demo-site-hero {
+      background: linear-gradient(135deg, #1A56DB, #0F2240);
+      padding: 1.2rem 1rem;
+    }
+
+    .demo-site-hero-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .demo-site-hero-sub {
+      font-size: 0.65rem;
+      color: #94A3B8;
+      margin-bottom: 0.7rem;
+    }
+
+    .demo-btn {
+      background: var(--accent);
+      color: var(--ink);
+      padding: 0.25rem 0.6rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .demo-site-body {
+      padding: 0.8rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .demo-card-mini {
+      background: var(--mist);
+      border-radius: 3px;
+      padding: 0.5rem;
+    }
+
+    .demo-card-mini-title {
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .demo-card-mini-bar {
+      height: 3px;
+      background: var(--lgray);
+      border-radius: 2px;
+      margin-bottom: 0.2rem;
+    }
+
+    .demo-card-mini-bar:last-child { width: 60%; }
+
+    .demo-label {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #94A3B8;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 3px solid var(--accent);
+    }
+
+    .trust-item {
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .trust-item:last-child { border-right: none; }
+
+    .trust-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .trust-number span { color: var(--accent); }
+
+    .trust-label {
+      font-size: 0.73rem;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 5%; }
+
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-sub {
+      color: var(--gray);
+      font-size: 0.97rem;
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--offwhite); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--mist);
+      border: 1px solid var(--mist);
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.2rem 1.8rem;
+      transition: background 0.25s;
+      position: relative;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+      transform-origin: left;
+    }
+
+    .service-card:hover { background: var(--navy); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover .sc-title { color: var(--white); }
+    .service-card:hover .sc-desc { color: #94A3B8; }
+    .service-card:hover .sc-icon { color: var(--accent); }
+
+    .sc-icon {
+      font-size: 1.8rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
+      transition: color 0.25s;
+    }
+
+    .sc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      transition: color 0.25s;
+    }
+
+    .sc-desc {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.7;
+      transition: color 0.25s;
+    }
+
+    /* ── PROCESS ── */
+    .process { background: var(--navy); }
+    .process .section-title { color: var(--white); }
+    .process .section-sub { color: #94A3B8; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .process-step {
+      padding: 2rem 1.5rem;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .process-step:first-child { border-left: none; }
+
+    .step-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(245,158,11,0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: #64748B;
+      line-height: 1.65;
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--offwhite); }
+
+    .pricing-card {
+      max-width: 560px;
+      background: var(--white);
+      border: 1px solid var(--mist);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .pricing-header {
+      background: var(--navy);
+      padding: 2rem 2.5rem;
+    }
+
+    .pricing-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .pricing-desc {
+      font-size: 0.88rem;
+      color: #64748B;
+    }
+
+    .pricing-body { padding: 2rem 2.5rem; }
+
+    .pricing-amount {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pricing-currency {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .pricing-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .pricing-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 1.8rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      border-top: 1px solid var(--mist);
+      padding-top: 1.5rem;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .pricing-check {
+      color: var(--blue);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #1447B8; }
+
+    .pricing-also {
+      margin-top: 1.2rem;
+      padding: 1rem 1.2rem;
+      background: var(--offwhite);
+      border-radius: 3px;
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .pricing-also strong { color: var(--navy); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--mist); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testi-card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 3px;
+      border-top: 3px solid var(--blue);
+    }
+
+    .testi-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 0.08em; }
+
+    .testi-text {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+    }
+
+    .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+    .testi-role { font-size: 0.76rem; color: var(--gray); }
+
+    /* ── FAQ ── */
+    .faq { background: var(--offwhite); }
+
+    .faq-list {
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    details {
+      background: var(--white);
+      border: 1px solid var(--mist);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1.1rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .faq-arrow {
+      font-size: 0.85rem;
+      color: var(--gray);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    details[open] .faq-arrow { transform: rotate(180deg); }
+    details[open] { border-color: var(--blue); }
+    details[open] summary { color: var(--blue); }
+
+    .faq-answer {
+      padding: 0 1.4rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.75;
+      border-top: 1px solid var(--mist);
+      padding-top: 1rem;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--blue);
+      padding: 4rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.1;
+      max-width: 500px;
+    }
+
+    .cta-banner h2 span { color: var(--accent); }
+
+    .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-wa {
+      background: #25D366;
+      color: var(--white);
+      padding: 0.9rem 1.8rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .btn-wa:hover { background: #1DAA53; }
+
+    .btn-email {
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+      padding: 0.9rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: background 0.2s;
+    }
+
+    .btn-email:hover { background: rgba(255,255,255,0.22); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 3rem 5% 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #64748B;
+      text-decoration: none;
+      font-size: 0.83rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy { font-size: 0.78rem; color: #475569; }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #25D366;
+      color: var(--white);
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      z-index: 200;
+      transition: transform 0.2s;
+    }
+
+    .wa-float:hover { transform: scale(1.1); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 100px 5% 4rem; }
+      .hero-right { display: none; }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .cta-banner { text-align: center; justify-content: center; }
+      .hero-actions { flex-direction: column; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+      .process-step:first-child { border-top: none; }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+<body>
 
-    <header class="p-6 sticky top-0 z-50 glass border-b border-slate-200">
-        <nav class="max-w-5xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-black tracking-tight text-blue-900">Isaac's Agency</h1>
-            <a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank" class="text-sm font-bold text-blue-600 hover:text-blue-800 transition">LinkedIn Profile</a>
-        </nav>
-    </header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Isaac's <span>Agency</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="nav-cta">Start a Project</a></li>
+  </ul>
+</nav>
 
-    <main class="max-w-5xl mx-auto py-16 px-6">
-        
-        <section class="text-center mb-20">
-            <p class="inline-flex items-center rounded-full bg-blue-100 text-blue-800 px-4 py-2 text-sm font-semibold mb-6">Simple, clean websites for businesses that want results</p>
-            <h2 class="text-5xl md:text-6xl font-extrabold mb-6 text-blue-900 tracking-tight leading-tight">Websites that look polished and help customers trust you</h2>
-            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">I build modern, fast-loading websites that are easy to use and clear for your customers.</p>
-            <div class="flex flex-wrap justify-center gap-4 mb-10">
-                <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." class="inline-block bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 transition shadow-md">Start a Project</a>
-                <a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank" class="inline-block bg-white text-blue-900 border border-slate-200 px-8 py-4 rounded-xl text-lg font-bold hover:bg-slate-50 transition">LinkedIn</a>
-            </div>
-        </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">🇰🇪 Based in Kenya · Serving Kenyan Businesses</div>
+    <h1>Websites That Make <em>Customers</em> Trust You</h1>
+    <p class="hero-sub">I build clean, fast, professional websites for Kenyan businesses — roofing contractors, hardware shops, clinics, and more. One-time fee. No monthly charges.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-accent">Start on WhatsApp</a>
+      <a href="#pricing" class="btn-ghost">See Pricing</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="demo-card">
+      <div class="demo-bar">
+        <div class="demo-dot"></div>
+        <div class="demo-dot"></div>
+        <div class="demo-dot"></div>
+      </div>
+      <div class="demo-url">steelridgeroofing.co.ke</div>
+      <div class="demo-site-preview">
+        <div class="demo-site-header">SteelRidge Roofing</div>
+        <div class="demo-site-hero">
+          <div class="demo-site-hero-text">Roofs Built to Last a Lifetime</div>
+          <div class="demo-site-hero-sub">Professional roofing across Nairobi & beyond</div>
+          <div class="demo-btn">Get a Free Quote</div>
+        </div>
+        <div class="demo-site-body">
+          <div class="demo-card-mini">
+            <div class="demo-card-mini-title">Installation</div>
+            <div class="demo-card-mini-bar"></div>
+            <div class="demo-card-mini-bar"></div>
+          </div>
+          <div class="demo-card-mini">
+            <div class="demo-card-mini-title">Repairs</div>
+            <div class="demo-card-mini-bar"></div>
+            <div class="demo-card-mini-bar"></div>
+          </div>
+          <div class="demo-card-mini">
+            <div class="demo-card-mini-title">Waterproof</div>
+            <div class="demo-card-mini-bar"></div>
+            <div class="demo-card-mini-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-label">Example site built for a roofing contractor</div>
+    </div>
+  </div>
+</section>
 
-        <section class="mb-24">
-            <h3 class="text-3xl font-extrabold text-center mb-12">What I offer</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <article class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
-                    <h4 class="text-xl font-bold mb-3 text-blue-900">Custom websites</h4>
-                    <p class="text-slate-600">Tailored pages for your brand, services, and business goals.</p>
-                </article>
-                <article class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
-                    <h4 class="text-xl font-bold mb-3 text-blue-900">Fast & mobile-ready</h4>
-                    <p class="text-slate-600">Clean layouts that work well on phones, tablets, and desktops.</p>
-                </article>
-                <article class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300">
-                    <h4 class="text-xl font-bold mb-3 text-blue-900">Easy to contact</h4>
-                    <p class="text-slate-600">Simple paths for WhatsApp, calls, and inquiry forms.</p>
-                </article>
-            </div>
-        </section>
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <div class="trust-number">3<span>–5</span></div>
+    <div class="trust-label">Days to Launch</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number">100<span>%</span></div>
+    <div class="trust-label">Mobile Friendly</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number">KES<span>0</span></div>
+    <div class="trust-label">Monthly Fees</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number">30<span>days</span></div>
+    <div class="trust-label">Free Support</div>
+  </div>
+</div>
 
-        <section class="mb-24">
-            <h3 class="text-3xl font-extrabold text-center mb-12">Recent Projects</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                <article class="bg-gradient-to-br from-blue-500 to-blue-600 p-12 rounded-2xl text-white shadow-md hover:shadow-lg transition-all duration-300">
-                    <h4 class="text-2xl font-bold mb-3">Portfolio Coming Soon</h4>
-                    <p class="opacity-90">I'm adding my best project examples here. Each one shows real results for clients.</p>
-                </article>
-                <article class="bg-gradient-to-br from-slate-200 to-slate-300 p-12 rounded-2xl text-slate-900 shadow-md hover:shadow-lg transition-all duration-300">
-                    <h4 class="text-2xl font-bold mb-3">Ready to be next?</h4>
-                    <p class="opacity-90">Your website could be featured here. Let's build something great together.</p>
-                </article>
-            </div>
-        </section>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="eyebrow">What I Build</p>
+  <h2 class="section-title">Services</h2>
+  <p class="section-sub">Everything your business needs to look professional and get found online — done for you.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="sc-icon">🏗️</div>
+      <div class="sc-title">Business Website</div>
+      <p class="sc-desc">A clean, custom site built around your services, your location, and your customers. Not a template.</p>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">📱</div>
+      <div class="sc-title">Mobile-Ready Design</div>
+      <p class="sc-desc">Most Kenyan customers browse on their phones. Every site I build works perfectly on any screen size.</p>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">💬</div>
+      <div class="sc-title">WhatsApp Integration</div>
+      <p class="sc-desc">One-tap WhatsApp buttons so visitors contact you instantly — no complicated forms needed.</p>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🌐</div>
+      <div class="sc-title">Domain & Hosting Setup</div>
+      <p class="sc-desc">I help you get your .co.ke domain and guide you through setup. Your site, your name, your brand.</p>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">🔍</div>
+      <div class="sc-title">Google SEO Basics</div>
+      <p class="sc-desc">Basic optimisation so your site can be found on Google by people searching for your services locally.</p>
+    </div>
+    <div class="service-card">
+      <div class="sc-icon">✏️</div>
+      <div class="sc-title">Edits & Updates</div>
+      <p class="sc-desc">Need to change something after launch? Edits are available at a small flat rate — no retainer required.</p>
+    </div>
+  </div>
+</section>
 
-        <section class="mb-24">
-            <h3 class="text-3xl font-extrabold text-center mb-12">What Clients Say</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <article class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <p class="text-slate-600 mb-4 italic">"Isaac built exactly what we needed. Our site is fast, looks professional, and customers love it."</p>
-                    <p class="font-bold text-slate-900">— Small Business Owner</p>
-                </article>
-                <article class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <p class="text-slate-600 mb-4 italic">"Great communication throughout. He understood our vision and delivered a website that converts."</p>
-                    <p class="font-bold text-slate-900">— E-commerce Manager</p>
-                </article>
-                <article class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <p class="text-slate-600 mb-4 italic">"Professional, reliable, and affordable. Exactly what a growing business needs."</p>
-                    <p class="font-bold text-slate-900">— Service Provider</p>
-                </article>
-            </div>
-        </section>
+<!-- PROCESS -->
+<section class="process" id="process">
+  <p class="eyebrow">How It Works</p>
+  <h2 class="section-title">From Zero to Live in Days</h2>
+  <p class="section-sub">A simple process with no technical headaches on your side. You just provide your details — I handle the rest.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">We Talk</div>
+      <p class="step-desc">You message me on WhatsApp. We discuss your business, services, and what you want customers to do on your site.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">I Build</div>
+      <p class="step-desc">I design and code your site in 3–5 days. Clean, fast, and built specifically for your business.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">You Review</div>
+      <p class="step-desc">I send you a live preview link. You check everything and request any changes before launch.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Go Live</div>
+      <p class="step-desc">We connect your .co.ke domain and your site goes live. Your customers can find you from that day.</p>
+    </div>
+  </div>
+</section>
 
-        <section class="mb-24 bg-gradient-to-r from-blue-50 to-blue-100 p-12 rounded-3xl border border-blue-200">
-            <h3 class="text-3xl font-extrabold text-center mb-8">Simple Pricing</h3>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                    <h4 class="text-2xl font-bold text-blue-900 mb-2">Website Package</h4>
-                    <p class="text-slate-600 mb-6">Perfect for businesses ready to build trust online</p>
-                    <div class="mb-6">
-                        <p class="text-5xl font-extrabold text-blue-600">KES 20,000</p>
-                        <p class="text-slate-600 text-sm mt-2">Starting price • Custom quotes available</p>
-                    </div>
-                    <ul class="space-y-3 mb-8 text-slate-700">
-                        <li class="flex items-start"><span class="text-blue-600 mr-3">✓</span> Custom, professional design</li>
-                        <li class="flex items-start"><span class="text-blue-600 mr-3">✓</span> Mobile-friendly & fast-loading</li>
-                        <li class="flex items-start"><span class="text-blue-600 mr-3">✓</span> Easy contact forms & WhatsApp integration</li>
-                        <li class="flex items-start"><span class="text-blue-600 mr-3">✓</span> SEO basics included</li>
-                        <li class="flex items-start"><span class="text-blue-600 mr-3">✓</span> 30-day support after launch</li>
-                    </ul>
-                    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I'm%20interested%20in%20your%20website%20package.%20Let's%20discuss%20my%20project." class="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition">Get Started</a>
-                </div>
-            </div>
-        </section>
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <p class="eyebrow">Simple Pricing</p>
+  <h2 class="section-title">One Price. No Surprises.</h2>
+  <p class="section-sub">You pay once to build the site. No monthly fees, no hidden charges, no retainers.</p>
+  <div class="pricing-card">
+    <div class="pricing-header">
+      <div class="pricing-tag">Website Package</div>
+      <div class="pricing-name">Full Business Website</div>
+      <div class="pricing-desc">For businesses ready to look professional online</div>
+    </div>
+    <div class="pricing-body">
+      <div class="pricing-amount">
+        <span class="pricing-currency">KES</span>
+        <span class="pricing-number">20,000</span>
+      </div>
+      <p class="pricing-note">One-time payment · Custom quotes available for larger projects</p>
+      <ul class="pricing-features">
+        <li><span class="pricing-check">✓</span> Custom design built for your business</li>
+        <li><span class="pricing-check">✓</span> Mobile-friendly on all devices</li>
+        <li><span class="pricing-check">✓</span> WhatsApp button + contact form</li>
+        <li><span class="pricing-check">✓</span> Google SEO basics included</li>
+        <li><span class="pricing-check">✓</span> Domain & hosting setup guidance</li>
+        <li><span class="pricing-check">✓</span> 30 days free support after launch</li>
+        <li><span class="pricing-check">✓</span> Fast loading — works on slow connections</li>
+      </ul>
+      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I'm%20interested%20in%20your%20website%20package.%20Let's%20discuss%20my%20project." target="_blank" class="btn-primary">Start on WhatsApp →</a>
+      <div class="pricing-also">
+        <strong>Need changes after launch?</strong> Any edits or additions after the 30-day support window are billed at a small flat rate depending on the work. No retainer needed.
+      </div>
+    </div>
+  </div>
+</section>
 
-        <section class="bg-white p-10 md:p-12 rounded-3xl mb-24 border border-slate-100 shadow-sm">
-            <h3 class="text-2xl font-extrabold text-center mb-4">Why this works well</h3>
-            <p class="text-center text-slate-600 mb-6 max-w-2xl mx-auto">A good website should feel clear, professional, and easy to trust from the first click.</p>
-            <div class="grid md:grid-cols-3 gap-6 text-left">
-                <article class="rounded-2xl bg-slate-50 p-6 border border-slate-100"><p class="text-sm text-blue-700 font-semibold mb-2">Clear message</p><p class="text-slate-600">Visitors understand what you do quickly.</p></article>
-                <article class="rounded-2xl bg-slate-50 p-6 border border-slate-100"><p class="text-sm text-blue-700 font-semibold mb-2">Smooth experience</p><p class="text-slate-600">Clean design keeps the page easy to browse.</p></article>
-                <article class="rounded-2xl bg-slate-50 p-6 border border-slate-100"><p class="text-sm text-blue-700 font-semibold mb-2">Better conversion</p><p class="text-slate-600">Simple calls to action make it easy to get started.</p></article>
-            </div>
-        </section>
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="eyebrow">Client Reviews</p>
+  <h2 class="section-title">What Clients Say</h2>
+  <p class="section-sub">Feedback from business owners I've worked with.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Isaac built exactly what we needed. Our site is fast, looks professional, and customers love it. Best investment we made."</p>
+      <div class="testi-name">Small Business Owner</div>
+      <div class="testi-role">Nairobi</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Great communication throughout. He understood our vision and delivered a site that actually brings in enquiries."</p>
+      <div class="testi-name">Service Provider</div>
+      <div class="testi-role">Kiambu</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Professional, reliable, and affordable. Customers now find us on Google and call directly. Exactly what we needed."</p>
+      <div class="testi-name">Business Owner</div>
+      <div class="testi-role">Thika</div>
+    </div>
+  </div>
+</section>
 
-        <section class="mb-24">
-            <h3 class="text-3xl font-extrabold text-center mb-12">Frequently Asked Questions</h3>
-            <div class="max-w-3xl mx-auto space-y-4">
-                <details class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer group">
-                    <summary class="font-bold text-lg text-slate-900 flex items-center justify-between">
-                        How long does a website take to build?
-                        <span class="group-open:rotate-180 transition">↓</span>
-                    </summary>
-                    <p class="text-slate-600 mt-4">Most projects take 2-3 weeks from start to launch. Rush projects are available for an additional fee.</p>
-                </details>
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <p class="eyebrow">Common Questions</p>
+  <h2 class="section-title">FAQ</h2>
+  <div class="faq-list">
+    <details>
+      <summary>How long does a website take to build? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">Most projects are done in 3–5 days from when you send me your business details. Rush projects are available for an additional fee.</p>
+    </details>
+    <details>
+      <summary>Do I need to provide anything? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">Just your business name, services, location, phone number, and any photos you have. I handle the writing, design, and coding.</p>
+    </details>
+    <details>
+      <summary>What about my domain name? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">I recommend a .co.ke domain — it's cheap (around KES 1,000–1,300/year) and trusted by Kenyan customers. You can register it on Safaricom or Truehost. I'll guide you through it step by step.</p>
+    </details>
+    <details>
+      <summary>Are there monthly fees after launch? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">No monthly fees from me. The only recurring cost is your domain renewal (~KES 1,300/year) and hosting if applicable. That's it.</p>
+    </details>
+    <details>
+      <summary>What if I need changes after my site launches? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">The first 30 days include free support for minor fixes. After that, edits are charged at a small flat rate depending on what's needed — no retainer or subscription required.</p>
+    </details>
+    <details>
+      <summary>Will my site work on mobile phones? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">Yes — 100%. Every site I build is fully mobile-responsive. It will look great and load fast on any phone, tablet, or computer.</p>
+    </details>
+    <details>
+      <summary>How do we stay in touch during the project? <span class="faq-arrow">↓</span></summary>
+      <p class="faq-answer">Entirely on WhatsApp. I send you updates, preview links, and check-ins throughout. Most clients find it very easy to manage.</p>
+    </details>
+  </div>
+</section>
 
-                <details class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer group">
-                    <summary class="font-bold text-lg text-slate-900 flex items-center justify-between">
-                        Do you offer updates and support after launch?
-                        <span class="group-open:rotate-180 transition">↓</span>
-                    </summary>
-                    <p class="text-slate-600 mt-4">Yes! All packages include 30 days of free support. After that, we can discuss maintenance plans based on your needs.</p>
-                </details>
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Get Found Online? <span>Let's Build Your Site.</span></h2>
+  <div class="cta-buttons">
+    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services.%20Can%20we%20talk?" target="_blank" class="btn-wa">💬 Chat on WhatsApp</a>
+    <a href="mailto:isaacmainapay@gmail.com?subject=Website%20Project%20Inquiry" class="btn-email">✉️ Email Me</a>
+  </div>
+</div>
 
-                <details class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer group">
-                    <summary class="font-bold text-lg text-slate-900 flex items-center justify-between">
-                        What if I need changes after my site launches?
-                        <span class="group-open:rotate-180 transition">↓</span>
-                    </summary>
-                    <p class="text-slate-600 mt-4">Easy! We can discuss revision requests during your 30-day support period. Ongoing updates are available with a maintenance plan.</p>
-                </details>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">Isaac's <span>Agency</span></div>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank">LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Isaac's Agency. Nairobi, Kenya.</p>
+    <p class="footer-copy">isaacmainapay@gmail.com · 0115 410 525</p>
+  </div>
+</footer>
 
-                <details class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer group">
-                    <summary class="font-bold text-lg text-slate-900 flex items-center justify-between">
-                        Do you handle domain and hosting?
-                        <span class="group-open:rotate-180 transition">↓</span>
-                    </summary>
-                    <p class="text-slate-600 mt-4">I can help set those up, or you can arrange them yourself. I'll guide you through whichever option you prefer.</p>
-                </details>
-
-                <details class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer group">
-                    <summary class="font-bold text-lg text-slate-900 flex items-center justify-between">
-                        How do we stay in touch during the project?
-                        <span class="group-open:rotate-180 transition">↓</span>
-                    </summary>
-                    <p class="text-slate-600 mt-4">I'll keep you updated via WhatsApp, email, or your preferred channel. Regular check-ins ensure we're on the same page.</p>
-                </details>
-
-                <details class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer group">
-                    <summary class="font-bold text-lg text-slate-900 flex items-center justify-between">
-                        What about mobile phones and tablets?
-                        <span class="group-open:rotate-180 transition">↓</span>
-                    </summary>
-                    <p class="text-slate-600 mt-4">Every site I build is 100% mobile-friendly. Your customers will have a great experience on any device.</p>
-                </details>
-            </div>
-        </section>
-
-        <footer class="bg-blue-900 text-white p-12 rounded-3xl text-center shadow-2xl">
-            <h2 class="text-3xl font-bold mb-4">Ready to make your business easier to trust online?</h2>
-            <p class="mb-8 opacity-80 max-w-2xl mx-auto">Let’s build a polished site that helps customers understand your value and contact you with confidence.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services.%20Can%20we%20talk?" class="inline-block bg-green-500 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition shadow-lg">Chat on WhatsApp</a>
-                <a href="mailto:isaacmainapay@gmail.com?subject=Website%20Project%20Inquiry" class="inline-block bg-blue-400 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-500 transition shadow-lg">Email Me</a>
-            </div>
-        </footer>
-    </main>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="wa-float" title="Chat on WhatsApp">💬</a>
 
 </body>
 </html>
