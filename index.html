@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Isaac's Agency | Web Design for Businesses remotely</title>
+  <title>Isaac's Agency | Web Design for Businesses worldwide</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -97,7 +97,6 @@
       overflow: hidden;
     }
 
-    /* Signature element: diagonal grid lines in background */
     .hero::before {
       content: '';
       position: absolute;
@@ -184,7 +183,6 @@
 
     .btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
 
-    /* Hero right — live demo card */
     .hero-right {
       position: relative;
       z-index: 1;
@@ -433,10 +431,77 @@
       transition: color 0.25s;
     }
 
+    /* ── PORTFOLIO ── */
+    .portfolio { background: var(--navy); }
+    .portfolio .section-title { color: var(--white); }
+    .portfolio .section-sub { color: #94A3B8; }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      text-decoration: none;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .portfolio-thumb {
+      background: linear-gradient(135deg, #1A56DB, #0F2240);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      min-height: 100px;
+    }
+
+    .portfolio-info { padding: 1.2rem 1.4rem; }
+
+    .portfolio-niche {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .portfolio-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .portfolio-link {
+      font-size: 0.75rem;
+      color: #64748B;
+    }
+
+    .portfolio-arrow {
+      float: right;
+      color: var(--accent);
+      font-size: 1rem;
+      margin-top: -1.4rem;
+    }
+
     /* ── PROCESS ── */
-    .process { background: var(--navy); }
-    .process .section-title { color: var(--white); }
-    .process .section-sub { color: #94A3B8; }
+    .process { background: var(--offwhite); }
+    .process .section-title { color: var(--navy); }
+    .process .section-sub { color: var(--gray); }
 
     .process-steps {
       display: grid;
@@ -447,7 +512,7 @@
 
     .process-step {
       padding: 2rem 1.5rem;
-      border-left: 1px solid rgba(255,255,255,0.08);
+      border-left: 1px solid var(--mist);
       position: relative;
     }
 
@@ -457,7 +522,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 3.5rem;
       font-weight: 800;
-      color: rgba(245,158,11,0.15);
+      color: rgba(245,158,11,0.2);
       line-height: 1;
       margin-bottom: 0.5rem;
     }
@@ -467,18 +532,18 @@
       font-size: 1.15rem;
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--white);
+      color: var(--navy);
       margin-bottom: 0.5rem;
     }
 
     .step-desc {
       font-size: 0.85rem;
-      color: #64748B;
+      color: var(--gray);
       line-height: 1.65;
     }
 
     /* ── PRICING ── */
-    .pricing { background: var(--offwhite); }
+    .pricing { background: var(--mist); }
 
     .pricing-card {
       max-width: 560px;
@@ -602,7 +667,7 @@
     .pricing-also strong { color: var(--navy); }
 
     /* ── TESTIMONIALS ── */
-    .testimonials { background: var(--mist); }
+    .testimonials { background: var(--offwhite); }
 
     .testi-grid {
       display: grid;
@@ -631,7 +696,7 @@
     .testi-role { font-size: 0.76rem; color: var(--gray); }
 
     /* ── FAQ ── */
-    .faq { background: var(--offwhite); }
+    .faq { background: var(--mist); }
 
     .faq-list {
       max-width: 680px;
@@ -825,7 +890,7 @@
       .cta-banner { text-align: center; justify-content: center; }
       .hero-actions { flex-direction: column; }
       .process-steps { grid-template-columns: 1fr; }
-      .process-step { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+      .process-step { border-left: none; border-top: 1px solid var(--mist); }
       .process-step:first-child { border-top: none; }
     }
   </style>
@@ -837,6 +902,7 @@
   <div class="nav-logo">Isaac's <span>Agency</span></div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#process">How It Works</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -847,12 +913,12 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-badge">🇰🇪 Based in Kenya · Serving Businesses remotely</div>
+    <div class="hero-badge">🌐 Based in Kenya · Serving Businesses Worldwide</div>
     <h1>Websites That Make <em>Customers</em> Trust You</h1>
-    <p class="hero-sub">I build clean, fast, professional websites for businesses — roofing contractors, hardware shops, clinics, and more. One-time fee. No monthly charges.</p>
+    <p class="hero-sub">I build clean, fast, professional websites for businesses — roofing contractors, hardware shops, clinics, safari companies, and more. One-time fee. No monthly charges.</p>
     <div class="hero-actions">
       <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-accent">Start on WhatsApp</a>
-      <a href="#pricing" class="btn-ghost">See Pricing</a>
+      <a href="#portfolio" class="btn-ghost">View My Work</a>
     </div>
   </div>
   <div class="hero-right">
@@ -949,6 +1015,51 @@
       <div class="sc-title">Edits & Updates</div>
       <p class="sc-desc">Need to change something after launch? Edits are available at a small flat rate — no retainer required.</p>
     </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <p class="eyebrow">My Work</p>
+  <h2 class="section-title">Sites I've Built</h2>
+  <p class="section-sub">Live demo sites across different industries — click any to explore.</p>
+  <div class="portfolio-grid">
+    <a href="https://bussiness-repo.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
+      <div class="portfolio-thumb">🏠</div>
+      <div class="portfolio-info">
+        <div class="portfolio-niche">Roofing</div>
+        <div class="portfolio-name">SteelRidge Roofing</div>
+        <div class="portfolio-link">bussiness-repo.isaacvobeck.workers.dev</div>
+        <div class="portfolio-arrow">↗</div>
+      </div>
+    </a>
+    <a href="https://business-temp1.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
+      <div class="portfolio-thumb">🔨</div>
+      <div class="portfolio-info">
+        <div class="portfolio-niche">Hardware & Construction</div>
+        <div class="portfolio-name">BuildSmart Hardware</div>
+        <div class="portfolio-link">business-temp1.isaacvobeck.workers.dev</div>
+        <div class="portfolio-arrow">↗</div>
+      </div>
+    </a>
+    <a href="https://savannah-beyond.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
+      <div class="portfolio-thumb">🦁</div>
+      <div class="portfolio-info">
+        <div class="portfolio-niche">Tourism & Safari</div>
+        <div class="portfolio-name">Savanna & Beyond</div>
+        <div class="portfolio-link">savannah-beyond.isaacvobeck.workers.dev</div>
+        <div class="portfolio-arrow">↗</div>
+      </div>
+    </a>
+    <a href="https://business-repo2.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
+      <div class="portfolio-thumb">🏥</div>
+      <div class="portfolio-info">
+        <div class="portfolio-niche">Healthcare</div>
+        <div class="portfolio-name">MediCare Clinic</div>
+        <div class="portfolio-link">business-repo2.isaacvobeck.workers.dev</div>
+        <div class="portfolio-arrow">↗</div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1057,11 +1168,11 @@
     </details>
     <details>
       <summary>What about my domain name? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">I recommend a .co.ke domain — it's cheap (around KES 1,000–1,300/year) and trusted by Kenyan customers. You can register it on Safaricom or Truehost. I'll guide you through it step by step.</p>
+      <p class="faq-answer">I recommend a domain that matches your business name and country. For Kenyan businesses, .co.ke is affordable and trusted locally. For international businesses, .com works great. I'll guide you through registration step by step — it usually costs $10–15/year.</p>
     </details>
     <details>
       <summary>Are there monthly fees after launch? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">No monthly fees from me. The only recurring cost is your domain renewal (~KES 1,300/year) and hosting if applicable. That's it.</p>
+      <p class="faq-answer">No monthly fees from me. The only recurring cost is your domain renewal (~$10–15/year) and hosting if applicable. That's it.</p>
     </details>
     <details>
       <summary>What if I need changes after my site launches? <span class="faq-arrow">↓</span></summary>
@@ -1083,7 +1194,7 @@
   <h2>Ready to Get Found Online? <span>Let's Build Your Site.</span></h2>
   <div class="cta-buttons">
     <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services.%20Can%20we%20talk?" target="_blank" class="btn-wa">💬 Chat on WhatsApp</a>
-    <a href="mailto:isaacmainapay@gmail.com?subject=Website%20Project%20Inquiry" class="btn-email">✉️ Email Me</a>
+    <a href="mailto:isaac@isaacwebs.co.ke?subject=Website%20Project%20Inquiry" class="btn-email">✉️ Email Me</a>
   </div>
 </div>
 
@@ -1093,15 +1204,17 @@
     <div class="footer-logo">Isaac's <span>Agency</span></div>
     <ul class="footer-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#process">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank">LinkedIn</a></li>
+      <li><a href="https://www.tiktok.com/@isaacwebs" target="_blank">TikTok</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Isaac's Agency. Nairobi, Kenya.</p>
-    <p class="footer-copy">isaacmainapay@gmail.com · 0115 410 525</p>
+    <p class="footer-copy">© 2026 Isaac's Agency. Nairobi, Kenya · Serving Businesses Worldwide.</p>
+    <p class="footer-copy">isaac@isaacwebs.co.ke · 0115 410 525</p>
   </div>
 </footer>
 
