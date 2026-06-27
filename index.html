@@ -3,58 +3,91 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Isaac's Agency | Web Design for Businesses worldwide</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <title>Isaac Maina | Web Design for Kenyan Businesses</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:     #0D1117;
-      --navy:    #0F2240;
-      --blue:    #1A56DB;
-      --sky:     #3B82F6;
-      --accent:  #F59E0B;
+      --black:   #0A0A0A;
+      --black2:  #111111;
+      --card:    #161616;
+      --border:  #242424;
+      --lime:    #C8F04C;
+      --lime-dk: #A8CC35;
+      --cream:   #F0EBE1;
+      --gray:    #888888;
+      --gray2:   #555555;
       --white:   #FFFFFF;
-      --offwhite:#F8F9FC;
-      --mist:    #E9EDF5;
-      --gray:    #64748B;
-      --lgray:   #CBD5E1;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--offwhite);
-      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--cream);
       overflow-x: hidden;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--lime);
+      padding: 0.6rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      animation: ticker 25s linear infinite;
+      gap: 0;
+    }
+
+    .ticker-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--black);
+      padding: 0 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .ticker-dot {
+      color: var(--black);
+      opacity: 0.4;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 28px;
+      left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      height: 64px;
-      background: rgba(15,34,64,0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      height: 60px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
       font-weight: 800;
-      font-size: 1.35rem;
       color: var(--white);
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
     }
 
-    .nav-logo span { color: var(--accent); }
+    .nav-logo span { color: var(--lime); }
 
     .nav-links {
       display: flex;
@@ -64,693 +97,559 @@
     }
 
     .nav-links a {
-      color: #94A3B8;
+      color: var(--gray);
       text-decoration: none;
       font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-weight: 400;
       transition: color 0.2s;
     }
 
     .nav-links a:hover { color: var(--white); }
 
     .nav-cta {
-      background: var(--accent) !important;
-      color: var(--ink) !important;
-      padding: 0.45rem 1.1rem;
-      border-radius: 3px;
-      font-weight: 700 !important;
+      background: var(--lime) !important;
+      color: var(--black) !important;
+      padding: 0.5rem 1.2rem;
+      font-weight: 600 !important;
+      font-size: 0.8rem !important;
+      border-radius: 4px;
     }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      background: var(--navy);
+      padding: 0 5%;
+      padding-top: 120px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 5%;
-      padding-top: 64px;
       gap: 4rem;
+      align-items: center;
       position: relative;
       overflow: hidden;
     }
 
+    /* Signature ambient glow */
     .hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
+      top: 10%; left: 30%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,240,76,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero-left { position: relative; z-index: 1; }
 
-    .hero-badge {
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(245,158,11,0.12);
-      border: 1px solid rgba(245,158,11,0.3);
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.9rem;
-      border-radius: 2px;
-      margin-bottom: 1.5rem;
+      gap: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--lime);
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--lime);
     }
 
     .hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
       font-weight: 800;
-      line-height: 1;
+      line-height: 1.0;
       color: var(--white);
-      text-transform: uppercase;
-      margin-bottom: 1.4rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.8rem;
     }
 
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
+    .hero h1 .accent { color: var(--lime); }
+    .hero h1 .dim { color: var(--gray2); }
 
     .hero-sub {
-      color: #94A3B8;
+      color: var(--gray);
       font-size: 1rem;
-      line-height: 1.75;
-      max-width: 440px;
+      line-height: 1.8;
+      max-width: 420px;
       margin-bottom: 2.5rem;
+      font-weight: 300;
     }
 
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-    .btn-accent {
-      background: var(--accent);
-      color: var(--ink);
+    .btn-lime {
+      background: var(--lime);
+      color: var(--black);
       padding: 0.85rem 1.8rem;
-      font-weight: 700;
-      font-size: 0.92rem;
+      font-weight: 600;
+      font-size: 0.88rem;
       border: none;
-      border-radius: 3px;
+      border-radius: 4px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
       transition: background 0.2s, transform 0.15s;
+      font-family: 'DM Sans', sans-serif;
     }
 
-    .btn-accent:hover { background: #D97706; transform: translateY(-1px); }
+    .btn-lime:hover { background: var(--lime-dk); transform: translateY(-1px); }
 
     .btn-ghost {
       background: transparent;
-      color: var(--white);
+      color: var(--cream);
       padding: 0.85rem 1.8rem;
-      font-weight: 600;
-      font-size: 0.92rem;
-      border: 1.5px solid rgba(255,255,255,0.2);
-      border-radius: 3px;
+      font-weight: 400;
+      font-size: 0.88rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, color 0.2s;
     }
 
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
+    .btn-ghost:hover { border-color: var(--gray); color: var(--white); }
 
+    /* Hero right — browser mockup */
     .hero-right {
       position: relative;
       z-index: 1;
-      display: flex;
-      justify-content: center;
     }
 
-    .demo-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 2rem;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .demo-bar {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 1.2rem;
-    }
-
-    .demo-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-    }
-
-    .demo-dot:nth-child(1) { background: #FF5F57; }
-    .demo-dot:nth-child(2) { background: #FEBC2E; }
-    .demo-dot:nth-child(3) { background: #28C840; }
-
-    .demo-url {
-      background: rgba(255,255,255,0.06);
-      border-radius: 3px;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.72rem;
-      color: #64748B;
-      margin-bottom: 1.5rem;
-      font-family: monospace;
-    }
-
-    .demo-site-preview {
-      background: var(--white);
-      border-radius: 4px;
+    .browser-mockup {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
     }
 
-    .demo-site-header {
-      background: #1C2B3A;
-      padding: 0.6rem 1rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--white);
-      text-transform: uppercase;
-    }
-
-    .demo-site-hero {
-      background: linear-gradient(135deg, #1A56DB, #0F2240);
-      padding: 1.2rem 1rem;
-    }
-
-    .demo-site-hero-text {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--white);
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .demo-site-hero-sub {
-      font-size: 0.65rem;
-      color: #94A3B8;
-      margin-bottom: 0.7rem;
-    }
-
-    .demo-btn {
-      background: var(--accent);
-      color: var(--ink);
-      padding: 0.25rem 0.6rem;
-      font-size: 0.6rem;
-      font-weight: 700;
-      border-radius: 2px;
-      display: inline-block;
-    }
-
-    .demo-site-body {
+    .browser-bar {
+      background: #1E1E1E;
       padding: 0.8rem 1rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    .demo-card-mini {
-      background: var(--mist);
-      border-radius: 3px;
-      padding: 0.5rem;
-    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-dot:nth-child(1) { background: #FF5F57; }
+    .browser-dot:nth-child(2) { background: #FEBC2E; }
+    .browser-dot:nth-child(3) { background: #28C840; }
 
-    .demo-card-mini-title {
-      font-size: 0.55rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.2rem;
-    }
-
-    .demo-card-mini-bar {
-      height: 3px;
-      background: var(--lgray);
-      border-radius: 2px;
-      margin-bottom: 0.2rem;
-    }
-
-    .demo-card-mini-bar:last-child { width: 60%; }
-
-    .demo-label {
-      text-align: center;
-      font-size: 0.72rem;
-      color: #94A3B8;
-      margin-top: 1rem;
-      font-style: italic;
-    }
-
-    /* ── TRUST STRIP ── */
-    .trust-strip {
-      background: var(--ink);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 3px solid var(--accent);
-    }
-
-    .trust-item {
-      padding: 1.8rem 1.5rem;
-      text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .trust-item:last-child { border-right: none; }
-
-    .trust-number {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .trust-number span { color: var(--accent); }
-
-    .trust-label {
-      font-size: 0.73rem;
-      color: #64748B;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 0.3rem;
-    }
-
-    /* ── SECTIONS ── */
-    section { padding: 5rem 5%; }
-
-    .eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 0.8rem;
-    }
-
-    .section-sub {
+    .browser-url {
+      background: var(--black);
+      border-radius: 4px;
+      padding: 0.3rem 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
       color: var(--gray);
-      font-size: 0.97rem;
-      line-height: 1.75;
-      max-width: 500px;
-      margin-bottom: 3rem;
+      flex: 1;
     }
 
-    /* ── SERVICES ── */
-    .services { background: var(--offwhite); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--mist);
-      border: 1px solid var(--mist);
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 2.2rem 1.8rem;
-      transition: background 0.25s;
+    .browser-content {
+      height: 400px;
+      overflow: hidden;
       position: relative;
     }
 
-    .service-card::before {
+    .browser-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      animation: scroll-preview 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes scroll-preview {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-60%); }
+    }
+
+    /* Floating badges on browser */
+    .browser-badge {
+      position: absolute;
+      background: var(--lime);
+      color: var(--black);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    .browser-badge-1 { bottom: 1.5rem; left: -2rem; }
+    .browser-badge-2 { top: 4rem; right: -2rem; background: var(--card); border: 1px solid var(--border); color: var(--lime); }
+
+    /* ── STATS ── */
+    .stats {
+      padding: 3rem 5%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item {
+      padding: 1.5rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-num span { color: var(--lime); }
+    .stat-lbl { font-size: 0.78rem; color: var(--gray); font-weight: 300; }
+
+    /* ── INDUSTRY STUDIES ── */
+    .portfolio {
+      padding: 6rem 5%;
+      background: var(--black);
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--lime);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--lime);
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title .accent { color: var(--lime); }
+
+    .section-sub {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 500px;
+      margin-bottom: 3.5rem;
+      font-weight: 300;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .portfolio-card {
+      background: var(--card);
+      overflow: hidden;
+      position: relative;
+      transition: background 0.25s;
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover { background: #1C1C1C; }
+
+    .portfolio-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%) brightness(0.8);
+      transition: filter 0.3s, transform 0.4s;
+    }
+
+    .portfolio-card:hover .portfolio-img {
+      filter: grayscale(0%) brightness(0.9);
+      transform: scale(1.02);
+    }
+
+    .portfolio-body { padding: 1.5rem; }
+
+    .portfolio-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--lime);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .portfolio-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--lime);
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: gap 0.2s;
+    }
+
+    .portfolio-link:hover { gap: 0.7rem; }
+
+    /* ── PROCESS ── */
+    .process {
+      padding: 6rem 5%;
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      padding: 2rem 2rem 2rem 0;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .process-step:last-child { border-right: none; padding-right: 0; }
+    .process-step:not(:first-child) { padding-left: 2rem; }
+
+    .process-step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--lime);
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.1em;
+    }
+
+    .process-step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .process-step-desc {
+      font-size: 0.84rem;
+      color: var(--gray);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 6rem 5%;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      padding: 2rem;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--lime);
       transform: scaleX(0);
       transition: transform 0.25s;
       transform-origin: left;
     }
 
-    .service-card:hover { background: var(--navy); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover .sc-title { color: var(--white); }
-    .service-card:hover .sc-desc { color: #94A3B8; }
-    .service-card:hover .sc-icon { color: var(--accent); }
+    .service-card:hover { background: #1A1A1A; }
+    .service-card:hover::after { transform: scaleX(1); }
 
-    .sc-icon {
-      font-size: 1.8rem;
-      color: var(--blue);
-      margin-bottom: 1rem;
-      transition: color 0.25s;
-    }
-
-    .sc-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-      transition: color 0.25s;
-    }
-
-    .sc-desc {
-      font-size: 0.88rem;
-      color: var(--gray);
-      line-height: 1.7;
-      transition: color 0.25s;
-    }
-
-    /* ── PORTFOLIO ── */
-    .portfolio { background: var(--navy); }
-    .portfolio .section-title { color: var(--white); }
-    .portfolio .section-sub { color: #94A3B8; }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .portfolio-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 6px;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-      text-decoration: none;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-
-    .portfolio-thumb {
-      background: linear-gradient(135deg, #1A56DB, #0F2240);
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      min-height: 100px;
-    }
-
-    .portfolio-info { padding: 1.2rem 1.4rem; }
-
-    .portfolio-niche {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-
-    .portfolio-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-
-    .portfolio-link {
-      font-size: 0.75rem;
-      color: #64748B;
-    }
-
-    .portfolio-arrow {
-      float: right;
-      color: var(--accent);
-      font-size: 1rem;
-      margin-top: -1.4rem;
-    }
-
-    /* ── PROCESS ── */
-    .process { background: var(--offwhite); }
-    .process .section-title { color: var(--navy); }
-    .process .section-sub { color: var(--gray); }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0;
-      position: relative;
-    }
-
-    .process-step {
-      padding: 2rem 1.5rem;
-      border-left: 1px solid var(--mist);
-      position: relative;
-    }
-
-    .process-step:first-child { border-left: none; }
-
-    .step-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: rgba(245,158,11,0.2);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .step-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-    }
-
-    .step-desc {
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.65;
-    }
-
-    /* ── PRICING ── */
-    .pricing { background: var(--mist); }
-
-    .pricing-card {
-      max-width: 560px;
-      background: var(--white);
-      border: 1px solid var(--mist);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .pricing-header {
-      background: var(--navy);
-      padding: 2rem 2.5rem;
-    }
-
-    .pricing-tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-
-    .pricing-desc {
-      font-size: 0.88rem;
-      color: #64748B;
-    }
-
-    .pricing-body { padding: 2rem 2.5rem; }
-
-    .pricing-amount {
-      display: flex;
-      align-items: baseline;
-      gap: 0.3rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .pricing-currency {
-      font-family: 'Barlow Condensed', sans-serif;
+    .service-icon {
       font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--navy);
-    }
-
-    .pricing-number {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
-    }
-
-    .pricing-note {
-      font-size: 0.78rem;
-      color: var(--gray);
-      margin-bottom: 1.8rem;
-    }
-
-    .pricing-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-      border-top: 1px solid var(--mist);
-      padding-top: 1.5rem;
-    }
-
-    .pricing-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.7rem;
-      font-size: 0.9rem;
-      color: #374151;
-    }
-
-    .pricing-check {
-      color: var(--blue);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .btn-primary {
-      background: var(--blue);
       color: var(--white);
-      padding: 0.9rem 2rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-      transition: background 0.2s;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
     }
 
-    .btn-primary:hover { background: #1447B8; }
-
-    .pricing-also {
-      margin-top: 1.2rem;
-      padding: 1rem 1.2rem;
-      background: var(--offwhite);
-      border-radius: 3px;
-      font-size: 0.82rem;
+    .service-desc {
+      font-size: 0.83rem;
       color: var(--gray);
-      line-height: 1.6;
-    }
-
-    .pricing-also strong { color: var(--navy); }
-
-    /* ── TESTIMONIALS ── */
-    .testimonials { background: var(--offwhite); }
-
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .testi-card {
-      background: var(--white);
-      padding: 1.8rem;
-      border-radius: 3px;
-      border-top: 3px solid var(--blue);
-    }
-
-    .testi-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 0.08em; }
-
-    .testi-text {
-      font-size: 0.9rem;
-      color: #374151;
       line-height: 1.7;
-      margin-bottom: 1.2rem;
-      font-style: italic;
+      font-weight: 300;
     }
 
-    .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
-    .testi-role { font-size: 0.76rem; color: var(--gray); }
+    .service-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--lime);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
 
-    /* ── FAQ ── */
-    .faq { background: var(--mist); }
+    /* ── HONEST SECTION ── */
+    .honest {
+      padding: 6rem 5%;
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+    }
 
-    .faq-list {
-      max-width: 680px;
+    .honest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .honest-left h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+    }
+
+    .honest-left h2 .accent { color: var(--lime); }
+
+    .honest-left p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .honest-points {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 1rem;
+      margin-top: 2rem;
     }
 
-    details {
-      background: var(--white);
-      border: 1px solid var(--mist);
-      border-radius: 3px;
+    .honest-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .hp-icon { color: var(--lime); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+    .hp-text strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+    .hp-text span { font-size: 0.82rem; color: var(--gray); font-weight: 300; }
+
+    /* Code block on right */
+    .code-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
       overflow: hidden;
     }
 
-    summary {
-      padding: 1.1rem 1.4rem;
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--navy);
-      cursor: pointer;
+    .code-header {
+      background: #1E1E1E;
+      padding: 0.8rem 1rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      list-style: none;
-      user-select: none;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    summary::-webkit-details-marker { display: none; }
+    .code-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .code-dot:nth-child(1) { background: #FF5F57; }
+    .code-dot:nth-child(2) { background: #FEBC2E; }
+    .code-dot:nth-child(3) { background: #28C840; }
 
-    .faq-arrow {
-      font-size: 0.85rem;
+    .code-filename {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
       color: var(--gray);
-      transition: transform 0.2s;
-      flex-shrink: 0;
+      margin-left: 0.5rem;
     }
 
-    details[open] .faq-arrow { transform: rotate(180deg); }
-    details[open] { border-color: var(--blue); }
-    details[open] summary { color: var(--blue); }
-
-    .faq-answer {
-      padding: 0 1.4rem 1.2rem;
-      font-size: 0.88rem;
+    .code-body {
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      line-height: 1.9;
       color: var(--gray);
-      line-height: 1.75;
-      border-top: 1px solid var(--mist);
-      padding-top: 1rem;
     }
 
-    /* ── CTA BANNER ── */
-    .cta-banner {
-      background: var(--blue);
-      padding: 4rem 5%;
+    .code-line { display: block; }
+    .code-tag { color: #569CD6; }
+    .code-attr { color: #9CDCFE; }
+    .code-val { color: #CE9178; }
+    .code-comment { color: #6A9955; }
+    .code-lime { color: var(--lime); }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 6rem 5%;
+      background: var(--lime);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -758,54 +657,154 @@
       gap: 2rem;
     }
 
-    .cta-banner h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+    .cta h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 800;
-      text-transform: uppercase;
-      color: var(--white);
+      color: var(--black);
       line-height: 1.1;
-      max-width: 500px;
+      letter-spacing: -0.03em;
+      max-width: 550px;
     }
-
-    .cta-banner h2 span { color: var(--accent); }
 
     .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    .btn-wa {
-      background: #25D366;
-      color: var(--white);
-      padding: 0.9rem 1.8rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border-radius: 3px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: background 0.2s;
-    }
-
-    .btn-wa:hover { background: #1DAA53; }
-
-    .btn-email {
-      background: rgba(255,255,255,0.15);
-      color: var(--white);
-      padding: 0.9rem 1.8rem;
+    .btn-black {
+      background: var(--black);
+      color: var(--lime);
+      padding: 0.9rem 2rem;
       font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 3px;
+      font-size: 0.88rem;
+      border-radius: 4px;
       text-decoration: none;
-      border: 1.5px solid rgba(255,255,255,0.3);
+      display: inline-block;
       transition: background 0.2s;
+      font-family: 'DM Sans', sans-serif;
     }
 
-    .btn-email:hover { background: rgba(255,255,255,0.22); }
+    .btn-black:hover { background: #1A1A1A; }
+
+    .btn-outline-black {
+      background: transparent;
+      color: var(--black);
+      padding: 0.9rem 2rem;
+      font-weight: 500;
+      font-size: 0.88rem;
+      border: 2px solid var(--black);
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-outline-black:hover { background: var(--black); color: var(--lime); }
+
+    /* ── CONTACT ── */
+    .contact {
+      padding: 6rem 5%;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-left h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-left p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: center; }
+
+    .cd-icon {
+      width: 36px; height: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .cd-label { font-size: 0.72rem; color: var(--gray2); margin-bottom: 0.1rem; font-family: 'JetBrains Mono', monospace; }
+    .cd-value { font-size: 0.9rem; color: var(--cream); font-weight: 500; }
+
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-form h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--cream);
+      outline: none;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray2); }
+    .form-group select option { background: var(--black); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--lime); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--ink);
+      background: var(--black2);
       padding: 3rem 5% 2rem;
+      border-top: 1px solid var(--border);
     }
 
     .footer-top {
@@ -813,37 +812,24 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 2rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid var(--border);
       margin-bottom: 1.5rem;
     }
 
     .footer-logo {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       color: var(--white);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: -0.02em;
     }
 
-    .footer-logo span { color: var(--accent); }
+    .footer-logo span { color: var(--lime); }
 
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #64748B;
-      text-decoration: none;
-      font-size: 0.83rem;
-      transition: color 0.2s;
-    }
-
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
     .footer-links a:hover { color: var(--white); }
 
     .footer-bottom {
@@ -854,23 +840,29 @@
       gap: 1rem;
     }
 
-    .footer-copy { font-size: 0.78rem; color: #475569; }
+    .footer-copy { font-size: 0.75rem; color: var(--gray2); }
+    .footer-tech {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--gray2);
+    }
 
-    /* Floating WhatsApp */
+    .footer-tech span { color: var(--lime); }
+
+    /* WhatsApp float */
     .wa-float {
       position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
+      bottom: 1.5rem; right: 1.5rem;
       background: #25D366;
       color: var(--white);
-      width: 54px; height: 54px;
+      width: 52px; height: 52px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       text-decoration: none;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
       z-index: 200;
       transition: transform 0.2s;
     }
@@ -878,34 +870,68 @@
     .wa-float:hover { transform: scale(1.1); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; padding: 100px 5% 4rem; }
+      .hero { grid-template-columns: 1fr; padding-top: 100px; }
       .hero-right { display: none; }
-      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .honest-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .cta { text-align: center; justify-content: center; }
     }
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
-      .trust-strip { grid-template-columns: repeat(2, 1fr); }
-      .cta-banner { text-align: center; justify-content: center; }
-      .hero-actions { flex-direction: column; }
-      .process-steps { grid-template-columns: 1fr; }
-      .process-step { border-left: none; border-top: 1px solid var(--mist); }
-      .process-step:first-child { border-top: none; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Roofing Contractors <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Safari Companies <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Hardware Shops <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Medical Clinics <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Law Firms <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Hotels & Lodges <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Dental Clinics <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Driving Schools <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Event Planners <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Pharmacies <span class="ticker-dot">·</span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item">Roofing Contractors <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Safari Companies <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Hardware Shops <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Medical Clinics <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Law Firms <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Hotels & Lodges <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Dental Clinics <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Driving Schools <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Event Planners <span class="ticker-dot">·</span></span>
+    <span class="ticker-item">Pharmacies <span class="ticker-dot">·</span></span>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Isaac's <span>Agency</span></div>
+  <div class="nav-logo">Isaac<span>.</span>dev</div>
   <ul class="nav-links">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#process">Process</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#process">How It Works</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="nav-cta">Start a Project</a></li>
   </ul>
 </nav>
@@ -913,313 +939,351 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-badge">🌍 Serving Businesses Worldwide</div>
-    <h1>Websites That Make <em>Customers</em> Trust You</h1>
-    <p class="hero-sub">I build clean, fast, professional websites for businesses — roofing contractors, hardware shops, clinics, safari companies, and more. One-time fee. No monthly charges.</p>
+    <div class="hero-eyebrow">Web Design · Nakuru, Kenya</div>
+    <h1>Websites That<br/><span class="accent">Win</span> Clients<br/><span class="dim">for Your Business</span></h1>
+    <p class="hero-sub">I build fast, professional websites for Kenyan businesses — roofing contractors, clinics, safari companies, law firms and more. One-time fee. Live in days.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-accent">Start on WhatsApp</a>
-      <a href="#portfolio" class="btn-ghost">View My Work</a>
+      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-lime">Start on WhatsApp</a>
+      <a href="#portfolio" class="btn-ghost">See My Work</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="demo-card">
-      <div class="demo-bar">
-        <div class="demo-dot"></div>
-        <div class="demo-dot"></div>
-        <div class="demo-dot"></div>
-      </div>
-      <div class="demo-url">steelridgeroofing.co.ke</div>
-      <div class="demo-site-preview">
-        <div class="demo-site-header">SteelRidge Roofing</div>
-        <div class="demo-site-hero">
-          <div class="demo-site-hero-text">Roofs Built to Last a Lifetime</div>
-          <div class="demo-site-hero-sub">Professional roofing across Nairobi & beyond</div>
-          <div class="demo-btn">Get a Free Quote</div>
+    <div class="browser-mockup">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
         </div>
-        <div class="demo-site-body">
-          <div class="demo-card-mini">
-            <div class="demo-card-mini-title">Installation</div>
-            <div class="demo-card-mini-bar"></div>
-            <div class="demo-card-mini-bar"></div>
-          </div>
-          <div class="demo-card-mini">
-            <div class="demo-card-mini-title">Repairs</div>
-            <div class="demo-card-mini-bar"></div>
-            <div class="demo-card-mini-bar"></div>
-          </div>
-          <div class="demo-card-mini">
-            <div class="demo-card-mini-title">Waterproof</div>
-            <div class="demo-card-mini-bar"></div>
-            <div class="demo-card-mini-bar"></div>
-          </div>
-        </div>
+        <div class="browser-url">savanna-beyond.isaacvobeck.workers.dev</div>
       </div>
-      <div class="demo-label">Example site built for a roofing contractor</div>
+      <div class="browser-content">
+        <img src="https://image.pollinations.ai/prompt/luxury%20safari%20company%20website%20screenshot%20dark%20elegant%20gold%20accents%20hero%20section%20african%20savanna%20background%20clean%20modern%20web%20design%20no%20text%20no%20watermark?width=900&height=1400&seed=999&nologo=true" alt="Safari site preview"/>
+      </div>
     </div>
+    <div class="browser-badge browser-badge-1">✓ Live on Cloudflare</div>
+    <div class="browser-badge browser-badge-2">Built in &lt; 5 days</div>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-item">
-    <div class="trust-number">3<span>–5</span></div>
-    <div class="trust-label">Days to Launch</div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num">5<span>+</span></div>
+    <div class="stat-lbl">Industries covered</div>
   </div>
-  <div class="trust-item">
-    <div class="trust-number">100<span>%</span></div>
-    <div class="trust-label">Mobile Friendly</div>
+  <div class="stat-item">
+    <div class="stat-num">KES<span>0</span></div>
+    <div class="stat-lbl">Monthly fees</div>
   </div>
-  <div class="trust-item">
-    <div class="trust-number">USD<span>0</span></div>
-    <div class="trust-label">Monthly Fees</div>
+  <div class="stat-item">
+    <div class="stat-num">5</div>
+    <div class="stat-lbl">Days to go live</div>
   </div>
-  <div class="trust-item">
-    <div class="trust-number">30<span>days</span></div>
-    <div class="trust-label">Free Support</div>
+  <div class="stat-item">
+    <div class="stat-num">30<span>d</span></div>
+    <div class="stat-lbl">Free support</div>
   </div>
 </div>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <p class="eyebrow">What I Build</p>
-  <h2 class="section-title">Services</h2>
-  <p class="section-sub">Everything your business needs to look professional and get found online — done for you.</p>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="sc-icon">🏗️</div>
-      <div class="sc-title">Business Website</div>
-      <p class="sc-desc">A clean, custom site built around your services, your location, and your customers. Not a template.</p>
-    </div>
-    <div class="service-card">
-      <div class="sc-icon">📱</div>
-      <div class="sc-title">Mobile-Ready Design</div>
-      <p class="sc-desc">Most customers browse on their phones. Every site I build works perfectly on any screen size.</p>
-    </div>
-    <div class="service-card">
-      <div class="sc-icon">💬</div>
-      <div class="sc-title">WhatsApp Integration</div>
-      <p class="sc-desc">One-tap WhatsApp buttons so visitors contact you instantly — no complicated forms needed.</p>
-    </div>
-    <div class="service-card">
-      <div class="sc-icon">🌐</div>
-      <div class="sc-title">Domain & Hosting Setup</div>
-      <p class="sc-desc">I help you get your domain and guide you through setup. Your site, your name, your brand.</p>
-    </div>
-    <div class="service-card">
-      <div class="sc-icon">🔍</div>
-      <div class="sc-title">Google SEO Basics</div>
-      <p class="sc-desc">Basic optimisation so your site can be found on Google by people searching for your services locally.</p>
-    </div>
-    <div class="service-card">
-      <div class="sc-icon">✏️</div>
-      <div class="sc-title">Edits & Updates</div>
-      <p class="sc-desc">Need to change something after launch? Edits are available at a small flat rate — no retainer required.</p>
-    </div>
-  </div>
-</section>
-
 <!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
-  <p class="eyebrow">My Work</p>
-  <h2 class="section-title">Sites I've Built</h2>
-  <p class="section-sub">Live demo sites across different industries — click any to explore.</p>
+  <div class="section-label">Industry Studies</div>
+  <h2 class="section-title">Built Across<br/><span class="accent">Multiple Industries</span></h2>
+  <p class="section-sub">Every industry has different needs. These are design studies I've built to show exactly what your business could look like online.</p>
   <div class="portfolio-grid">
-    <a href="https://bussiness-repo.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
-      <div class="portfolio-thumb">🏠</div>
-      <div class="portfolio-info">
-        <div class="portfolio-niche">Roofing</div>
+    <div class="portfolio-card">
+      <img src="https://image.pollinations.ai/prompt/roofing%20company%20website%20dark%20steel%20red%20accents%20hero%20section%20clean%20modern%20professional%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=111&nologo=true" alt="Roofing" class="portfolio-img"/>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Construction · Roofing</div>
         <div class="portfolio-name">SteelRidge Roofing</div>
-        <div class="portfolio-link">bussiness-repo.isaacvobeck.workers.dev</div>
-        <div class="portfolio-arrow">↗</div>
+        <p class="portfolio-desc">Bold industrial design for a roofing contractor. Quote request form, services, project gallery.</p>
+        <a href="https://steel-ridge-roofing.pages.dev" target="_blank" class="portfolio-link">View Study →</a>
       </div>
-    </a>
-    <a href="https://business-temp1.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
-      <div class="portfolio-thumb">🔨</div>
-      <div class="portfolio-info">
-        <div class="portfolio-niche">Hardware & Construction</div>
-        <div class="portfolio-name">BuildSmart Hardware</div>
-        <div class="portfolio-link">business-temp1.isaacvobeck.workers.dev</div>
-        <div class="portfolio-arrow">↗</div>
+    </div>
+    <div class="portfolio-card">
+      <img src="https://image.pollinations.ai/prompt/hardware%20shop%20website%20orange%20charcoal%20industrial%20design%20product%20categories%20clean%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=222&nologo=true" alt="Hardware" class="portfolio-img"/>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Retail · Hardware</div>
+        <div class="portfolio-name">BuildMart Hardware</div>
+        <p class="portfolio-desc">Product categories, delivery info, and quote request for a building materials supplier.</p>
+        <a href="#" class="portfolio-link">View Study →</a>
       </div>
-    </a>
-    <a href="https://savannah-beyond.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
-      <div class="portfolio-thumb">🦁</div>
-      <div class="portfolio-info">
-        <div class="portfolio-niche">Tourism & Safari</div>
-        <div class="portfolio-name">Savanna & Beyond</div>
-        <div class="portfolio-link">savannah-beyond.isaacvobeck.workers.dev</div>
-        <div class="portfolio-arrow">↗</div>
-      </div>
-    </a>
-    <a href="https://business-repo2.isaacvobeck.workers.dev/" target="_blank" class="portfolio-card">
-      <div class="portfolio-thumb">🏥</div>
-      <div class="portfolio-info">
-        <div class="portfolio-niche">Healthcare</div>
+    </div>
+    <div class="portfolio-card">
+      <img src="https://image.pollinations.ai/prompt/medical%20clinic%20website%20teal%20mint%20clean%20soft%20healthcare%20design%20appointment%20booking%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=333&nologo=true" alt="Clinic" class="portfolio-img"/>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Healthcare · Clinic</div>
         <div class="portfolio-name">MediCare Clinic</div>
-        <div class="portfolio-link">business-repo2.isaacvobeck.workers.dev</div>
-        <div class="portfolio-arrow">↗</div>
+        <p class="portfolio-desc">Soft medical design with doctor profiles, services, and appointment booking form.</p>
+        <a href="#" class="portfolio-link">View Study →</a>
       </div>
-    </a>
+    </div>
+    <div class="portfolio-card">
+      <img src="https://image.pollinations.ai/prompt/luxury%20safari%20website%20dark%20gold%20elegant%20kenya%20travel%20design%20hero%20section%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=444&nologo=true" alt="Safari" class="portfolio-img"/>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Tourism · Safari</div>
+        <div class="portfolio-name">Savanna & Beyond</div>
+        <p class="portfolio-desc">Premium luxury safari site with experiences, destinations, and direct booking enquiry form.</p>
+        <a href="https://savannah-beyond.isaacvobeck.workers.dev" target="_blank" class="portfolio-link">View Study →</a>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <img src="https://image.pollinations.ai/prompt/law%20firm%20website%20deep%20navy%20gold%20authoritative%20elegant%20legal%20design%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=555&nologo=true" alt="Law Firm" class="portfolio-img"/>
+      <div class="portfolio-body">
+        <div class="portfolio-tag">Legal · Law Firm</div>
+        <div class="portfolio-name">Kariuki & Associates</div>
+        <p class="portfolio-desc">Authoritative legal site with practice areas, team profiles, and consultation booking.</p>
+        <a href="#" class="portfolio-link">View Study →</a>
+      </div>
+    </div>
+    <div class="portfolio-card" style="background: #0F0F0F; display:flex; align-items:center; justify-content:center; min-height:200px; flex-direction:column; gap:1rem; padding:2rem;">
+      <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--white); text-align:center;">Your Industry<br/>Could Be Next</div>
+      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-lime" style="font-size:0.8rem; padding:0.7rem 1.4rem;">Start a Project</a>
+    </div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section class="process" id="process">
-  <p class="eyebrow">How It Works</p>
-  <h2 class="section-title">From Zero to Live in Days</h2>
-  <p class="section-sub">A simple process with no technical headaches on your side. You just provide your details — I handle the rest.</p>
-  <div class="process-steps">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">From Zero to <span class="accent">Live</span><br/>in Less Than a Week</h2>
+  <div class="process-grid">
     <div class="process-step">
-      <div class="step-num">01</div>
-      <div class="step-title">We Talk</div>
-      <p class="step-desc">You message me on WhatsApp. We discuss your business, services, and what you want customers to do on your site.</p>
+      <div class="process-step-num">01 / DISCOVERY</div>
+      <div class="process-step-title">We Talk on WhatsApp</div>
+      <p class="process-step-desc">You tell me about your business — your services, your customers, what you want the site to do. I ask 7 simple questions. No forms, no meetings needed.</p>
     </div>
     <div class="process-step">
-      <div class="step-num">02</div>
-      <div class="step-title">I Build</div>
-      <p class="step-desc">I design and code your site in 3–5 days. Clean, fast, and built specifically for your business.</p>
+      <div class="process-step-num">02 / BUILD</div>
+      <div class="process-step-title">I Design & Code</div>
+      <p class="process-step-desc">I build your site from scratch in VS Code — custom design, your brand colours, your content. Not a drag and drop template. Clean hand-written code.</p>
     </div>
     <div class="process-step">
-      <div class="step-num">03</div>
-      <div class="step-title">You Review</div>
-      <p class="step-desc">I send you a live preview link. You check everything and request any changes before launch.</p>
+      <div class="process-step-num">03 / REVIEW</div>
+      <div class="process-step-title">You Check Everything</div>
+      <p class="process-step-desc">I send you a live preview link. You review every detail and request any changes. Nothing goes live until you're completely happy.</p>
     </div>
     <div class="process-step">
-      <div class="step-num">04</div>
-      <div class="step-title">Go Live</div>
-      <p class="step-desc">We connect your domain and your site goes live. Your customers can find you from that day.</p>
+      <div class="process-step-num">04 / LAUNCH</div>
+      <div class="process-step-title">Your Site Goes Live</div>
+      <p class="process-step-desc">We connect your .co.ke domain and deploy to Cloudflare. Your site is live, fast, and secure with a free SSL certificate. Customers can find you from day one.</p>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <p class="eyebrow">Simple Pricing</p>
-  <h2 class="section-title">One Price. No Surprises.</h2>
-  <p class="section-sub">You pay once to build the site. No monthly fees, no hidden charges, no retainers.</p>
-  <div class="pricing-card">
-    <div class="pricing-header">
-      <div class="pricing-tag">Website Package</div>
-      <div class="pricing-name">Full Business Website</div>
-      <div class="pricing-desc">For businesses ready to look professional online</div>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What's Included</div>
+  <h2 class="section-title">Everything You Need<br/><span class="accent">Nothing You Don't</span></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <div class="service-title">Fast Custom Website</div>
+      <p class="service-desc">Hand-coded HTML and CSS — no bloated builders. Loads fast even on slow Kenyan connections.</p>
+      <div class="service-price">Included in every package</div>
     </div>
-    <div class="pricing-body">
-      <div class="pricing-amount">
-        <span class="pricing-currency">USD</span>
-        <span class="pricing-number">150</span>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <div class="service-title">Mobile Responsive</div>
+      <p class="service-desc">Looks perfect on every phone, tablet and desktop. Most of your customers are on mobile.</p>
+      <div class="service-price">Included in every package</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💬</div>
+      <div class="service-title">WhatsApp Integration</div>
+      <p class="service-desc">One-tap WhatsApp buttons so visitors contact you instantly from any page on your site.</p>
+      <div class="service-price">Included in every package</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <div class="service-title">Domain Setup Help</div>
+      <p class="service-desc">I guide you through getting your .co.ke domain on Safaricom and connecting it to your site.</p>
+      <div class="service-price">Included in every package</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <div class="service-title">Basic SEO</div>
+      <p class="service-desc">Page titles, meta descriptions, and structure optimised so Google can find and rank your site.</p>
+      <div class="service-price">Included in every package</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✏️</div>
+      <div class="service-title">Post-Launch Edits</div>
+      <p class="service-desc">Need changes after launch? Edits are available at a small flat rate — no retainer required.</p>
+      <div class="service-price">From KES 500 per edit</div>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST SECTION -->
+<section class="honest">
+  <div class="honest-grid">
+    <div class="honest-left">
+      <div class="section-label">Straight Talk</div>
+      <h2>What to Expect<br/>When You <span class="accent">Work With Me</span></h2>
+      <p>I'm building my portfolio and every project I take on gets my full attention. Here's what that means for you.</p>
+      <div class="honest-points">
+        <div class="honest-point">
+          <div class="hp-icon">✓</div>
+          <div class="hp-text">
+            <strong>No fake testimonials</strong>
+            <span>I don't pad my site with made-up reviews. My work speaks for itself — you can see it in my industry studies above.</span>
+          </div>
+        </div>
+        <div class="honest-point">
+          <div class="hp-icon">✓</div>
+          <div class="hp-text">
+            <strong>Real hand-written code</strong>
+            <span>Every site is built from scratch in VS Code — not generated by a website builder or copied from a theme.</span>
+          </div>
+        </div>
+        <div class="honest-point">
+          <div class="hp-icon">✓</div>
+          <div class="hp-text">
+            <strong>You own everything</strong>
+            <span>The code, the domain, the hosting — all yours. I hand it over completely when the project is done.</span>
+          </div>
+        </div>
+        <div class="honest-point">
+          <div class="hp-icon">✓</div>
+          <div class="hp-text">
+            <strong>One-time fee, no surprises</strong>
+            <span>KES 15,000–20,000 depending on scope. You know the price before we start. Nothing changes after.</span>
+          </div>
+        </div>
       </div>
-      <p class="pricing-note">One-time payment · Custom quotes available for larger projects</p>
-      <ul class="pricing-features">
-        <li><span class="pricing-check">✓</span> Custom design built for your business</li>
-        <li><span class="pricing-check">✓</span> Mobile-friendly on all devices</li>
-        <li><span class="pricing-check">✓</span> WhatsApp button + contact form</li>
-        <li><span class="pricing-check">✓</span> Google SEO basics included</li>
-        <li><span class="pricing-check">✓</span> Domain & hosting setup guidance</li>
-        <li><span class="pricing-check">✓</span> 30 days free support after launch</li>
-        <li><span class="pricing-check">✓</span> Fast loading — works on slow connections</li>
-      </ul>
-      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I'm%20interested%20in%20your%20website%20package.%20Let's%20discuss%20my%20project." target="_blank" class="btn-primary">Start on WhatsApp →</a>
-      <div class="pricing-also">
-        <strong>Need changes after launch?</strong> Any edits or additions after the 30-day support window are billed at a small flat rate depending on the work. No retainer needed.
+    </div>
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dot"></div>
+        <div class="code-dot"></div>
+        <div class="code-dot"></div>
+        <span class="code-filename">your-website.html</span>
+      </div>
+      <div class="code-body">
+        <span class="code-line"><span class="code-comment">&lt;!-- Built for your business --&gt;</span></span>
+        <span class="code-line"><span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-val">"hero"</span><span class="code-tag">&gt;</span></span>
+        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span><span class="code-lime">Your Business Name</span><span class="code-tag">&lt;/h1&gt;</span></span>
+        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Your services, your city<span class="code-tag">&lt;/p&gt;</span></span>
+        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-val">"https://wa.me/..."</span><span class="code-tag">&gt;</span></span>
+        <span class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-lime">Contact Us on WhatsApp</span></span>
+        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;/a&gt;</span></span>
+        <span class="code-line"><span class="code-tag">&lt;/section&gt;</span></span>
+        <br/>
+        <span class="code-line"><span class="code-comment">&lt;!-- Hosted on Cloudflare --&gt;</span></span>
+        <span class="code-line"><span class="code-comment">&lt;!-- yourname.co.ke --&gt;</span></span>
+        <span class="code-line"><span class="code-comment">&lt;!-- Live in &lt; 5 days --&gt;</span></span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <p class="eyebrow">Client Reviews</p>
-  <h2 class="section-title">What Clients Say</h2>
-  <p class="section-sub">Feedback from business owners I've worked with.</p>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Isaac built exactly what we needed. Our site is fast, looks professional, and customers love it. Best investment we made."</p>
-      <div class="testi-name">Small Business Owner</div>
-      <div class="testi-role">Nairobi</div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Great communication throughout. He understood our vision and delivered a site that actually brings in enquiries."</p>
-      <div class="testi-name">Service Provider</div>
-      <div class="testi-role">Kiambu</div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Professional, reliable, and affordable. Customers now find us on Google and call directly. Exactly what we needed."</p>
-      <div class="testi-name">Business Owner</div>
-      <div class="testi-role">Thika</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <p class="eyebrow">Common Questions</p>
-  <h2 class="section-title">FAQ</h2>
-  <div class="faq-list">
-    <details>
-      <summary>How long does a website take to build? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">Most projects are done in 3–5 days from when you send me your business details. Rush projects are available for an additional fee.</p>
-    </details>
-    <details>
-      <summary>Do I need to provide anything? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">Just your business name, services, location, phone number, and any photos you have. I handle the writing, design, and coding.</p>
-    </details>
-    <details>
-      <summary>What about my domain name? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">I recommend a domain that matches your business name and country. For Kenyan businesses, .co.ke is affordable and trusted locally. For international businesses, .com works great. I'll guide you through registration step by step — it usually costs $10–15/year.</p>
-    </details>
-    <details>
-      <summary>Are there monthly fees after launch? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">No monthly fees from me. The only recurring cost is your domain renewal (~$10–15/year) and hosting if applicable. That's it.</p>
-    </details>
-    <details>
-      <summary>What if I need changes after my site launches? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">The first 30 days include free support for minor fixes. After that, edits are charged at a small flat rate depending on what's needed — no retainer or subscription required.</p>
-    </details>
-    <details>
-      <summary>Will my site work on mobile phones? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">Yes — 100%. Every site I build is fully mobile-responsive. It will look great and load fast on any phone, tablet, or computer.</p>
-    </details>
-    <details>
-      <summary>How do we stay in touch during the project? <span class="faq-arrow">↓</span></summary>
-      <p class="faq-answer">Entirely on WhatsApp. I send you updates, preview links, and check-ins throughout. Most clients find it very easy to manage.</p>
-    </details>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <h2>Ready to Get Found Online? <span>Let's Build Your Site.</span></h2>
+<!-- CTA -->
+<div class="cta">
+  <h2>Ready to Get Your Business Online?</h2>
   <div class="cta-buttons">
-    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services.%20Can%20we%20talk?" target="_blank" class="btn-wa">💬 Chat on WhatsApp</a>
-    <a href="mailto:isaac@isaacwebs.co.ke?subject=Website%20Project%20Inquiry" class="btn-email">✉️ Email Me</a>
+    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services.%20Can%20we%20talk?" target="_blank" class="btn-black">💬 WhatsApp Me Now</a>
+    <a href="mailto:isaacmainapay@gmail.com?subject=Website%20Project%20Inquiry" class="btn-outline-black">✉️ Email Me</a>
   </div>
 </div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Let's Build<br/><span class="accent">Something Great</span></h2>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h3>Start the conversation</h3>
+      <p>Tell me about your business and what you need. I'll come back to you within a few hours with a clear plan and price. No fluff, no sales pitch.</p>
+      <div class="contact-detail">
+        <div class="cd-icon">💬</div>
+        <div>
+          <div class="cd-label">WhatsApp</div>
+          <div class="cd-value">+254 115 410 525</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">✉️</div>
+        <div>
+          <div class="cd-label">Email</div>
+          <div class="cd-value">isaacmainapay@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">📍</div>
+        <div>
+          <div class="cd-label">Based In</div>
+          <div class="cd-value">Nakuru, Kenya</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">🌐</div>
+        <div>
+          <div class="cd-label">LinkedIn</div>
+          <div class="cd-value">isaac-mwaura-8597b740b</div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xykqjzdg" method="POST">
+      <h3>Send a Message</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Kamau" required/></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+254 700 000 000" required/></div>
+      </div>
+      <div class="form-group">
+        <label>Your Business Type</label>
+        <select name="business_type">
+          <option>Select your industry...</option>
+          <option>Roofing / Construction</option>
+          <option>Hardware / Building Materials</option>
+          <option>Clinic / Pharmacy</option>
+          <option>Safari / Tours</option>
+          <option>Law Firm</option>
+          <option>Hotel / Lodge</option>
+          <option>Restaurant / Café</option>
+          <option>Dental Clinic</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>What Do You Need?</label>
+        <select name="project_type">
+          <option>Select...</option>
+          <option>Brand new website</option>
+          <option>Redesign existing site</option>
+          <option>Fix broken website</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Me More</label>
+        <textarea name="message" placeholder="Brief description of your business and what you want the site to do..."></textarea>
+      </div>
+      <button type="submit" class="btn-lime" style="width:100%; padding:1rem; font-size:0.88rem; border-radius:4px;">Send Message</button>
+    </form>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="footer-logo">Isaac's <span>Agency</span></div>
+    <div class="footer-logo">Isaac<span>.</span>dev</div>
     <ul class="footer-links">
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#process">Process</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#process">How It Works</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
       <li><a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank">LinkedIn</a></li>
-      <li><a href="https://www.tiktok.com/@isaacwebs" target="_blank">TikTok</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Isaac's Agency. Nairobi, Kenya · Serving Businesses Worldwide.</p>
-    <p class="footer-copy">isaac@isaacwebs.co.ke · 0115 410 525</p>
+    <p class="footer-copy">© 2026 Isaac Maina. Web Design · Nakuru, Kenya.</p>
+    <p class="footer-tech">Built with <span>HTML · CSS · Cloudflare</span></p>
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="wa-float" title="Chat on WhatsApp">💬</a>
+<a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="wa-float">💬</a>
 
 </body>
 </html>
