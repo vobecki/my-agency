@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Isaac Webs | Web Design for Kenyan Businesses</title>
+  <title>IsaacWebs | Custom Websites for Kenyan Businesses</title>
+  <meta name="description" content="IsaacWebs builds custom, fast-loading websites for small businesses in Kenya and beyond. One-time fee. No monthly charges. Live in 5 days."/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:   #0A0A0A;
+      /* 60/30/10 rule strictly applied */
+      --black:   #0A0A0A;   /* 60% — dominant */
       --black2:  #111111;
       --card:    #161616;
       --border:  #242424;
-      --lime:    #C8F04C;
+      --cream:   #F0EBE1;   /* 30% — secondary */
+      --cream2:  #E8E2D8;
+      --lime:    #C8F04C;   /* 10% — accent only */
       --lime-dk: #A8CC35;
-      --cream:   #F0EBE1;
       --gray:    #888888;
-      --gray2:   #555555;
+      --gray2:   #444444;
       --white:   #FFFFFF;
     }
 
@@ -33,29 +36,23 @@
     /* ── TICKER ── */
     .ticker {
       background: var(--lime);
-      padding: 0.6rem 0;
+      padding: 0.55rem 0;
       overflow: hidden;
       white-space: nowrap;
     }
 
-    .ticker-inner {
+    .ticker-track {
       display: inline-flex;
-      animation: ticker 25s linear infinite;
-      gap: 0;
+      animation: ticker 30s linear infinite;
     }
 
     .ticker-item {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 500;
       color: var(--black);
-      padding: 0 2rem;
-      letter-spacing: 0.05em;
-    }
-
-    .ticker-dot {
-      color: var(--black);
-      opacity: 0.4;
+      padding: 0 2.5rem;
+      letter-spacing: 0.04em;
     }
 
     @keyframes ticker {
@@ -66,28 +63,59 @@
     /* ── NAV ── */
     nav {
       position: fixed;
-      top: 28px;
-      left: 0; right: 0;
+      top: 28px; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      height: 60px;
-      background: rgba(10,10,10,0.92);
+      height: 62px;
+      background: rgba(10,10,10,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
     .nav-logo {
       font-family: 'Syne', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--white);
       letter-spacing: -0.02em;
     }
 
     .nav-logo span { color: var(--lime); }
+
+    .nav-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--lime);
+      background: rgba(200,240,76,0.1);
+      border: 1px solid rgba(200,240,76,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--lime);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
 
     .nav-links {
       display: flex;
@@ -110,30 +138,33 @@
       background: var(--lime) !important;
       color: var(--black) !important;
       padding: 0.5rem 1.2rem;
-      font-weight: 600 !important;
-      font-size: 0.8rem !important;
+      font-weight: 700 !important;
+      font-size: 0.78rem !important;
       border-radius: 4px;
+      letter-spacing: 0.02em;
     }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
       padding: 0 5%;
-      padding-top: 120px;
+      padding-top: 130px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 4rem;
       align-items: center;
       position: relative;
       overflow: hidden;
+      padding-bottom: 5rem;
     }
 
+    /* Ambient glow */
     .hero::before {
       content: '';
       position: absolute;
-      top: 10%; left: 30%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(200,240,76,0.06) 0%, transparent 70%);
+      top: 20%; left: 25%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(200,240,76,0.04) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -144,21 +175,21 @@
       align-items: center;
       gap: 0.6rem;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       color: var(--lime);
-      margin-bottom: 2rem;
-      letter-spacing: 0.05em;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.04em;
     }
 
     .hero-eyebrow::before {
       content: '';
-      width: 20px; height: 1px;
+      width: 18px; height: 1px;
       background: var(--lime);
     }
 
     .hero h1 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-size: clamp(2.8rem, 5.5vw, 5.2rem);
       font-weight: 800;
       line-height: 1.0;
       color: var(--white);
@@ -166,31 +197,35 @@
       margin-bottom: 1.8rem;
     }
 
-    .hero h1 .accent { color: var(--lime); }
-    .hero h1 .dim { color: var(--gray2); }
+    .hero h1 .lime { color: var(--lime); }
+    .hero h1 .dim { color: var(--gray2); font-weight: 400; }
 
     .hero-sub {
       color: var(--gray);
       font-size: 1rem;
       line-height: 1.8;
-      max-width: 420px;
+      max-width: 460px;
       margin-bottom: 2.5rem;
       font-weight: 300;
     }
 
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .hero-sub strong { color: var(--cream); font-weight: 500; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 3rem; }
 
     .btn-lime {
       background: var(--lime);
       color: var(--black);
       padding: 0.85rem 1.8rem;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.88rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       transition: background 0.2s, transform 0.15s;
       font-family: 'DM Sans', sans-serif;
     }
@@ -213,117 +248,195 @@
 
     .btn-ghost:hover { border-color: var(--gray); color: var(--white); }
 
-    /* Hero right — browser mockup */
+    /* Honest stat row */
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .hero-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .hero-stat-num span { color: var(--lime); }
+
+    .hero-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Hero right — photo card */
     .hero-right {
       position: relative;
       z-index: 1;
-    }
-
-    .browser-mockup {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-    }
-
-    .browser-bar {
-      background: #1E1E1E;
-      padding: 0.8rem 1rem;
       display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      border-bottom: 1px solid var(--border);
+      justify-content: center;
     }
 
-    .browser-dots { display: flex; gap: 6px; }
-    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .browser-dot:nth-child(1) { background: #FF5F57; }
-    .browser-dot:nth-child(2) { background: #FEBC2E; }
-    .browser-dot:nth-child(3) { background: #28C840; }
-
-    .browser-url {
-      background: var(--black);
-      border-radius: 4px;
-      padding: 0.3rem 0.8rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--gray);
-      flex: 1;
+    .photo-card {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
     }
 
-    .browser-content {
-      height: 400px;
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 4/5;
       overflow: hidden;
+      border-radius: 8px;
       position: relative;
     }
 
-    .browser-content img {
+    .photo-frame img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
-      animation: scroll-preview 20s ease-in-out infinite alternate;
+      filter: brightness(0.9);
     }
 
-    @keyframes scroll-preview {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-60%); }
-    }
-
-    .browser-badge {
+    /* Lime corner accent */
+    .photo-frame::before {
+      content: '';
       position: absolute;
-      background: var(--lime);
-      color: var(--black);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 500;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
+      top: -4px; left: -4px;
+      width: 50px; height: 50px;
+      border-top: 3px solid var(--lime);
+      border-left: 3px solid var(--lime);
+      z-index: 1;
+      border-radius: 4px 0 0 0;
     }
 
-    .browser-badge-1 { bottom: 1.5rem; left: -2rem; }
-    .browser-badge-2 { top: 4rem; right: -2rem; background: var(--card); border: 1px solid var(--border); color: var(--lime); }
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; right: -4px;
+      width: 50px; height: 50px;
+      border-bottom: 3px solid var(--lime);
+      border-right: 3px solid var(--lime);
+      z-index: 1;
+      border-radius: 0 0 4px 0;
+    }
 
-    /* ── STATS ── */
-    .stats {
-      padding: 3rem 5%;
+    /* Floating badges */
+    .photo-badge {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .photo-badge-1 {
+      bottom: 2rem;
+      left: -2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .photo-badge-2 {
+      top: 2rem;
+      right: -2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    .pb-icon { font-size: 1.2rem; }
+
+    .pb-text strong {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .pb-text span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--gray);
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust {
+      padding: 2rem 5%;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      background: var(--black2);
     }
 
-    .stat-item {
-      padding: 1.5rem 2rem;
-      border-right: 1px solid var(--border);
+    .trust-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--gray2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .stat-item:last-child { border-right: none; }
-
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.03em;
+    .trust-items {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      flex: 1;
     }
 
-    .stat-num span { color: var(--lime); }
-    .stat-lbl { font-size: 0.78rem; color: var(--gray); font-weight: 300; }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--gray);
+      font-weight: 300;
+      white-space: nowrap;
+    }
 
-    /* ── PORTFOLIO ── */
-    .portfolio {
+    .trust-item::before {
+      content: '✓';
+      color: var(--lime);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    /* ── ABOUT ── */
+    .about {
       padding: 6rem 5%;
       background: var(--black);
     }
 
-    .section-label {
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sec-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--lime);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       margin-bottom: 1rem;
       display: flex;
@@ -331,31 +444,138 @@
       gap: 0.8rem;
     }
 
-    .section-label::before {
+    .sec-label::before {
       content: '';
-      width: 20px; height: 1px;
+      width: 18px; height: 1px;
       background: var(--lime);
     }
 
-    .section-title {
+    .sec-title {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 800;
       color: var(--white);
       line-height: 1.05;
       letter-spacing: -0.03em;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
     }
 
-    .section-title .accent { color: var(--lime); }
+    .sec-title .lime { color: var(--lime); }
 
-    .section-sub {
-      color: var(--gray);
+    .about-bio {
       font-size: 0.95rem;
-      line-height: 1.8;
-      max-width: 500px;
-      margin-bottom: 3.5rem;
+      color: var(--gray);
+      line-height: 1.85;
       font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-bio strong { color: var(--cream); font-weight: 500; }
+
+    .about-honest {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--lime);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+      margin-top: 1.5rem;
+    }
+
+    .about-honest p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .about-honest p strong { color: var(--lime); font-style: normal; }
+
+    .about-socials {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .social-btn:hover { border-color: var(--lime); color: var(--lime); }
+
+    /* About right — honest metrics */
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .metric-card {
+      background: var(--card);
+      padding: 1.8rem 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .metric-card:hover { background: #1C1C1C; }
+
+    .metric-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .metric-num span { color: var(--lime); }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 300;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-source {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--gray2);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio {
+      padding: 6rem 5%;
+      background: var(--black2);
+      border-top: 1px solid var(--border);
+    }
+
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
     }
 
     .portfolio-grid {
@@ -366,75 +586,145 @@
       border: 1px solid var(--border);
     }
 
-    .portfolio-card {
+    .port-card {
       background: var(--card);
       overflow: hidden;
       position: relative;
       transition: background 0.25s;
-      cursor: pointer;
     }
 
-    .portfolio-card:hover { background: #1C1C1C; }
+    .port-card:hover { background: #1A1A1A; }
 
-    .portfolio-img {
+    .port-img-wrap { overflow: hidden; position: relative; }
+
+    .port-img {
       width: 100%;
       aspect-ratio: 16/10;
       object-fit: cover;
       display: block;
-      filter: grayscale(20%) brightness(0.8);
-      transition: filter 0.3s, transform 0.4s;
+      filter: grayscale(15%) brightness(0.8);
+      transition: filter 0.4s, transform 0.5s;
     }
 
-    .portfolio-card:hover .portfolio-img {
+    .port-card:hover .port-img {
       filter: grayscale(0%) brightness(0.9);
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
-    .portfolio-body { padding: 1.5rem; }
-
-    .portfolio-tag {
+    /* Live indicator */
+    .port-live {
+      position: absolute;
+      top: 0.8rem; right: 0.8rem;
+      background: rgba(10,10,10,0.8);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.25rem 0.6rem;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.58rem;
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      z-index: 1;
+    }
+
+    .port-live::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--lime);
+      border-radius: 50%;
+    }
+
+    .port-body { padding: 1.4rem; }
+
+    .port-niche {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
       color: var(--lime);
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
-    .portfolio-name {
+    .port-name {
       font-family: 'Syne', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 0.4rem;
       letter-spacing: -0.01em;
     }
 
-    .portfolio-desc {
-      font-size: 0.82rem;
+    .port-desc {
+      font-size: 0.8rem;
       color: var(--gray);
-      line-height: 1.65;
+      line-height: 1.6;
       font-weight: 300;
+      margin-bottom: 1rem;
     }
 
-    .portfolio-link {
+    .port-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .port-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55rem;
+      color: var(--gray2);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .port-link {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: var(--lime);
       text-decoration: none;
-      margin-top: 1rem;
       transition: gap 0.2s;
     }
 
-    .portfolio-link:hover { gap: 0.7rem; }
+    .port-link:hover { gap: 0.7rem; }
+
+    /* Last card CTA */
+    .port-cta-card {
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      text-align: center;
+      gap: 1.2rem;
+      min-height: 200px;
+      border: 1px dashed var(--border);
+    }
+
+    .port-cta-card p {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .port-cta-card span {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 300;
+    }
 
     /* ── PROCESS ── */
     .process {
       padding: 6rem 5%;
-      background: var(--black2);
+      background: var(--black);
       border-top: 1px solid var(--border);
     }
 
@@ -442,7 +732,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
-      margin-top: 3rem;
+      margin-top: 3.5rem;
     }
 
     .process-step {
@@ -451,207 +741,211 @@
       position: relative;
     }
 
-    .process-step:last-child { border-right: none; padding-right: 0; }
+    .process-step:last-child { border-right: none; }
     .process-step:not(:first-child) { padding-left: 2rem; }
 
-    .process-step-num {
+    .ps-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: var(--lime);
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
     }
 
-    .process-step-title {
+    .ps-title {
       font-family: 'Syne', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 0.6rem;
       letter-spacing: -0.01em;
     }
 
-    .process-step-desc {
-      font-size: 0.84rem;
-      color: var(--gray);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* ── SERVICES ── */
-    .services {
-      padding: 6rem 5%;
-      background: var(--black);
-      border-top: 1px solid var(--border);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 3.5rem;
-    }
-
-    .service-card {
-      background: var(--card);
-      padding: 2rem;
-      transition: background 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--lime);
-      transform: scaleX(0);
-      transition: transform 0.25s;
-      transform-origin: left;
-    }
-
-    .service-card:hover { background: #1A1A1A; }
-    .service-card:hover::after { transform: scaleX(1); }
-
-    .service-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .service-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .service-desc {
+    .ps-desc {
       font-size: 0.83rem;
       color: var(--gray);
       line-height: 1.7;
       font-weight: 300;
     }
 
-    .service-price {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--lime);
-      margin-top: 1rem;
-      letter-spacing: 0.05em;
-    }
-
-    /* ── HONEST SECTION ── */
-    .honest {
+    /* ── SERVICES / PRICING ── */
+    .services {
       padding: 6rem 5%;
       background: var(--black2);
       border-top: 1px solid var(--border);
     }
 
-    .honest-grid {
+    .services-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.4fr;
       gap: 5rem;
-      align-items: center;
+      align-items: start;
     }
 
-    .honest-left h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.2rem;
-    }
-
-    .honest-left h2 .accent { color: var(--lime); }
-
-    .honest-left p {
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 1.85;
-      font-weight: 300;
-      margin-bottom: 1rem;
-    }
-
-    .honest-points {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .honest-point {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1.2rem;
+    .pricing-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 6px;
-    }
-
-    .hp-icon { color: var(--lime); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-    .hp-text strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
-    .hp-text span { font-size: 0.82rem; color: var(--gray); font-weight: 300; }
-
-    .code-block {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
       overflow: hidden;
     }
 
-    .code-header {
-      background: #1E1E1E;
-      padding: 0.8rem 1rem;
+    .pricing-header {
+      background: var(--lime);
+      padding: 2rem 2.5rem;
+    }
+
+    .pricing-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+
+    .pricing-body { padding: 2rem 2.5rem; }
+
+    .pricing-amount {
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-bottom: 0.3rem;
     }
 
-    .code-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .code-dot:nth-child(1) { background: #FF5F57; }
-    .code-dot:nth-child(2) { background: #FEBC2E; }
-    .code-dot:nth-child(3) { background: #28C840; }
+    .pricing-currency {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--lime);
+    }
 
-    .code-filename {
+    .pricing-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .pricing-note {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.62rem;
       color: var(--gray);
-      margin-left: 0.5rem;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
     }
 
-    .code-body {
-      padding: 1.5rem;
-      font-family: 'JetBrains Mono', monospace;
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      color: var(--cream);
+      font-weight: 300;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--lime);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
       font-size: 0.75rem;
-      line-height: 1.9;
-      color: var(--gray);
     }
 
-    .code-line { display: block; }
-    .code-tag { color: #569CD6; }
-    .code-attr { color: #9CDCFE; }
-    .code-val { color: #CE9178; }
-    .code-comment { color: #6A9955; }
-    .code-lime { color: var(--lime); }
+    .pricing-edit-note {
+      background: rgba(200,240,76,0.06);
+      border: 1px solid rgba(200,240,76,0.12);
+      border-radius: 4px;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-top: 1rem;
+    }
+
+    .pricing-edit-note strong { color: var(--lime); }
+
+    /* Services list right */
+
+    .service-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+      transition: padding-left 0.2s;
+    }
+
+    .service-item:first-child { padding-top: 0; }
+    .service-item:last-child { border-bottom: none; }
+    .service-item:hover { padding-left: 0.4rem; }
+
+    .si-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .si-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .si-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 300;
+    }
 
     /* ── CTA ── */
     .cta {
-      padding: 6rem 5%;
       background: var(--lime);
+      padding: 5rem 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '</>';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14rem;
+      color: rgba(10,10,10,0.06);
+      position: absolute;
+      right: 4%; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      line-height: 1;
     }
 
     .cta h2 {
@@ -661,31 +955,41 @@
       color: var(--black);
       line-height: 1.1;
       letter-spacing: -0.03em;
-      max-width: 550px;
+      max-width: 520px;
+      position: relative;
+      z-index: 1;
     }
 
-    .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
 
     .btn-black {
       background: var(--black);
       color: var(--lime);
       padding: 0.9rem 2rem;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.88rem;
       border-radius: 4px;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       transition: background 0.2s;
       font-family: 'DM Sans', sans-serif;
     }
 
     .btn-black:hover { background: #1A1A1A; }
 
-    .btn-outline-black {
+    .btn-contra {
       background: transparent;
       color: var(--black);
       padding: 0.9rem 2rem;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.88rem;
       border: 2px solid var(--black);
       border-radius: 4px;
@@ -694,7 +998,7 @@
       transition: background 0.2s, color 0.2s;
     }
 
-    .btn-outline-black:hover { background: var(--black); color: var(--lime); }
+    .btn-contra:hover { background: var(--black); color: var(--lime); }
 
     /* ── CONTACT ── */
     .contact {
@@ -703,7 +1007,7 @@
       border-top: 1px solid var(--border);
     }
 
-    .contact-wrap {
+    .contact-layout {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
       gap: 5rem;
@@ -712,10 +1016,10 @@
 
     .contact-left h3 {
       font-family: 'Syne', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       letter-spacing: -0.02em;
     }
 
@@ -727,7 +1031,12 @@
       margin-bottom: 2rem;
     }
 
-    .contact-detail { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: center; }
+    .contact-detail {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: center;
+    }
 
     .cd-icon {
       width: 36px; height: 36px;
@@ -741,43 +1050,80 @@
       flex-shrink: 0;
     }
 
-    .cd-label { font-size: 0.72rem; color: var(--gray2); margin-bottom: 0.1rem; font-family: 'JetBrains Mono', monospace; }
-    .cd-value { font-size: 0.9rem; color: var(--cream); font-weight: 500; }
+    .cd-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--gray2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.1rem;
+    }
+
+    .cd-value {
+      font-size: 0.88rem;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    /* Two CTA types clearly separated */
+    .contact-cta-split {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cta-split-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gray2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
 
     .contact-form {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1.1rem;
     }
 
     .contact-form h3 {
       font-family: 'Syne', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
       letter-spacing: -0.02em;
     }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .contact-form p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
 
-    .form-group label {
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .fg { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .fg label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--gray);
     }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .fg input,
+    .fg select,
+    .fg textarea {
       padding: 0.8rem 1rem;
       border: 1px solid var(--border);
       background: var(--black);
@@ -789,13 +1135,13 @@
       transition: border-color 0.2s;
     }
 
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--gray2); }
-    .form-group select option { background: var(--black); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--lime); }
-    .form-group textarea { resize: vertical; min-height: 110px; }
+    .fg input::placeholder,
+    .fg textarea::placeholder { color: var(--gray2); }
+    .fg select option { background: var(--black); color: var(--cream); }
+    .fg input:focus,
+    .fg select:focus,
+    .fg textarea:focus { border-color: var(--lime); }
+    .fg textarea { resize: vertical; min-height: 100px; }
 
     /* ── FOOTER ── */
     footer {
@@ -825,9 +1171,34 @@
 
     .footer-logo span { color: var(--lime); }
 
-    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+    .footer-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gray2);
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
     .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--white); }
+    .footer-links a:hover { color: var(--lime); }
+
+    .footer-socials { display: flex; gap: 0.8rem; }
+
+    .footer-social {
+      width: 34px; height: 34px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .footer-social:hover { border-color: var(--lime); background: rgba(200,240,76,0.08); }
 
     .footer-bottom {
       display: flex;
@@ -837,14 +1208,14 @@
       gap: 1rem;
     }
 
-    .footer-copy { font-size: 0.75rem; color: var(--gray2); }
-    .footer-tech {
+    .footer-copy {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       color: var(--gray2);
+      letter-spacing: 0.04em;
     }
 
-    .footer-tech span { color: var(--lime); }
+    .footer-copy span { color: var(--lime); }
 
     /* WhatsApp float */
     .wa-float {
@@ -866,29 +1237,37 @@
 
     .wa-float:hover { transform: scale(1.1); }
 
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .process-grid { grid-template-columns: 1fr 1fr; }
+      .services-layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding-top: 100px; }
+      .hero { grid-template-columns: 1fr; padding-top: 110px; }
       .hero-right { display: none; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .honest-grid { grid-template-columns: 1fr; }
-      .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
+      .about-layout { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
       .cta { text-align: center; justify-content: center; }
     }
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
       .portfolio-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
+      .trust-items { gap: 1rem; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -896,306 +1275,391 @@
 
 <!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item">Roofing Contractors <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Safari Companies <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Hardware Shops <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Medical Clinics <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Law Firms <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Hotels & Lodges <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Dental Clinics <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Driving Schools <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Event Planners <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Pharmacies <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Roofing Contractors <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Safari Companies <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Hardware Shops <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Medical Clinics <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Law Firms <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Hotels & Lodges <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Dental Clinics <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Driving Schools <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Event Planners <span class="ticker-dot">·</span></span>
-    <span class="ticker-item">Pharmacies <span class="ticker-dot">·</span></span>
+  <div class="ticker-track">
+    <span class="ticker-item">Roofing Contractors ·</span>
+    <span class="ticker-item">Safari Companies ·</span>
+    <span class="ticker-item">Hardware Shops ·</span>
+    <span class="ticker-item">Medical Clinics ·</span>
+    <span class="ticker-item">Law Firms ·</span>
+    <span class="ticker-item">Hotels & Lodges ·</span>
+    <span class="ticker-item">Dental Clinics ·</span>
+    <span class="ticker-item">Driving Schools ·</span>
+    <span class="ticker-item">Event Planners ·</span>
+    <span class="ticker-item">Pharmacies ·</span>
+    <span class="ticker-item">Roofing Contractors ·</span>
+    <span class="ticker-item">Safari Companies ·</span>
+    <span class="ticker-item">Hardware Shops ·</span>
+    <span class="ticker-item">Medical Clinics ·</span>
+    <span class="ticker-item">Law Firms ·</span>
+    <span class="ticker-item">Hotels & Lodges ·</span>
+    <span class="ticker-item">Dental Clinics ·</span>
+    <span class="ticker-item">Driving Schools ·</span>
+    <span class="ticker-item">Event Planners ·</span>
+    <span class="ticker-item">Pharmacies ·</span>
   </div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Isaac<span>Webs</span></div>
+  <div class="nav-brand">
+    <div class="nav-logo">Isaac<span>Webs</span></div>
+    <div class="nav-status">Taking new projects</div>
+  </div>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Work</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="#services">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="nav-cta">Start a Project</a></li>
+    <li><a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="nav-cta">💬 Start a Project</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Web Design · Nakuru, Kenya</div>
-    <h1>Websites That<br/><span class="accent">Win</span> Clients<br/><span class="dim">for Your Business</span></h1>
-    <p class="hero-sub">I build fast, professional websites for Kenyan businesses — roofing contractors, clinics, safari companies, law firms and more. One-time fee. Live in days.</p>
+    <div class="hero-eyebrow">IsaacWebs · Nakuru, Kenya · Building in Public</div>
+    <h1>Websites That<br/><span class="lime">Actually Win</span><br/><span class="dim">Clients for You</span></h1>
+    <p class="hero-sub">I build <strong>custom, fast-loading websites</strong> for small businesses across Kenya and beyond — roofing contractors, clinics, safari companies, law firms and more. <strong>One-time fee. No monthly charges. Live in 5 days.</strong></p>
     <div class="hero-actions">
-      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-lime">Start on WhatsApp</a>
-      <a href="#portfolio" class="btn-ghost">See My Work</a>
+      <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-lime">💬 Start on WhatsApp</a>
+      <a href="#portfolio" class="btn-ghost">See My Work →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">1.99<span>k</span></div>
+        <div class="hero-stat-label">Site visits · Last 7 days</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5<span>+</span></div>
+        <div class="hero-stat-label">Industries built for</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">KES<span>0</span></div>
+        <div class="hero-stat-label">Monthly fees · Ever</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Days to go live</div>
+      </div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="browser-mockup">
-      <div class="browser-bar">
-        <div class="browser-dots">
-          <div class="browser-dot"></div>
-          <div class="browser-dot"></div>
-          <div class="browser-dot"></div>
-        </div>
-        <div class="browser-url">savannah-beyond.isaacvobeck.workers.dev</div>
+    <div class="photo-card">
+      <div class="photo-frame">
+        <img src="isaac-photo.jpg" alt="Isaac — IsaacWebs founder working at his desk in Nakuru, Kenya"/>
       </div>
-      <div class="browser-content">
-        <img src="https://image.pollinations.ai/prompt/luxury%20safari%20company%20website%20screenshot%20dark%20elegant%20gold%20accents%20hero%20section%20african%20savanna%20background%20clean%20modern%20web%20design%20no%20text%20no%20watermark?width=900&height=1400&seed=999&nologo=true" alt="Safari site preview"/>
+      <div class="photo-badge photo-badge-1">
+        <div class="pb-icon">⚡</div>
+        <div class="pb-text">
+          <strong>Live in 5 Days</strong>
+          <span>From brief to deployed</span>
+        </div>
+      </div>
+      <div class="photo-badge photo-badge-2">
+        <div class="pb-icon">🇰🇪</div>
+        <div class="pb-text">
+          <strong>Based in Nakuru</strong>
+          <span>Serving Kenya & beyond</span>
+        </div>
       </div>
     </div>
-    <div class="browser-badge browser-badge-1">✓ Live on Cloudflare</div>
-    <div class="browser-badge browser-badge-2">Built in &lt; 5 days</div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-item">
-    <div class="stat-num">5<span>+</span></div>
-    <div class="stat-lbl">Industries covered</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">KES<span>0</span></div>
-    <div class="stat-lbl">Monthly fees</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">5</div>
-    <div class="stat-lbl">Days to go live</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">30<span>d</span></div>
-    <div class="stat-lbl">Free support</div>
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="trust-label">What You Get</div>
+  <div class="trust-items">
+    <div class="trust-item">One-time flat fee</div>
+    <div class="trust-item">No monthly charges</div>
+    <div class="trust-item">Mobile-first design</div>
+    <div class="trust-item">WhatsApp integration</div>
+    <div class="trust-item">Free SSL certificate</div>
+    <div class="trust-item">30 days free support</div>
+    <div class="trust-item">You own everything</div>
   </div>
 </div>
 
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <div class="about-layout">
+    <div class="about-left">
+      <div class="sec-label">Who's Behind This</div>
+      <h2 class="sec-title">I'm Isaac.<br/>This is <span class="lime">IsaacWebs.</span></h2>
+      <p class="about-bio">I run <strong>IsaacWebs</strong> — building custom websites for small businesses, both locally in Kenya and remote clients elsewhere, all at a flat one-time fee with no monthly charges.</p>
+      <p class="about-bio">I use AI to move fast, but <strong>the real work is fixing what the AI gets wrong</strong> — that's the edge I bring. Every site is hand-coded in VS Code, deployed on Cloudflare, and built specifically for your business — not generated and forgotten.</p>
+      <div class="about-honest">
+        <p><strong>Building in public:</strong> I'm doing this because I want to build a real agency from the ground up and prove it can be done without pretending to be something I'm not. No fake testimonials. No inflated experience. Just the work.</p>
+      </div>
+      <div class="about-socials">
+        <a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank" class="social-btn">💼 LinkedIn</a>
+        <a href="https://www.tiktok.com/@isaacwebs" target="_blank" class="social-btn">🎵 TikTok</a>
+        <a href="https://contra.com/isaac_maina_w4uhc47q" target="_blank" class="social-btn">⚡ Contra</a>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-num">1.99<span>k</span></div>
+          <div class="metric-label">Site visits this week</div>
+          <div class="metric-source">via Cloudflare Analytics</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">92<span>%</span></div>
+          <div class="metric-label">Encrypted traffic rate</div>
+          <div class="metric-source">SSL working perfectly</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">5<span>+</span></div>
+          <div class="metric-label">Demo sites built</div>
+          <div class="metric-source">Roofing · Safari · Clinic · More</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">KES<span>0</span></div>
+          <div class="metric-label">Monthly hosting cost</div>
+          <div class="metric-source">Cloudflare Pages · Free tier</div>
+        </div>
+      </div>
+      <div style="margin-top:1px; background:var(--card); border:1px solid var(--border); padding:1.5rem; border-top:none;">
+        <p style="font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--gray2); letter-spacing:0.08em; margin-bottom:0.5rem;">OPERATING MODEL</p>
+        <p style="font-size:0.85rem; color:var(--gray); font-weight:300; line-height:1.7;">Self-taught web developer operating remotely from Nakuru, Kenya. All client communication via WhatsApp and email. No office needed — just a laptop, VS Code, and GitHub.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PORTFOLIO -->
-<section class="portfolio" id="portfolio">
-  <div class="section-label">Industry Studies</div>
-  <h2 class="section-title">Built Across<br/><span class="accent">Multiple Industries</span></h2>
-  <p class="section-sub">Every industry has different needs. These are design studies I've built to show exactly what your business could look like online.</p>
+<section class="portfolio reveal" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="sec-label">Recent Builds</div>
+      <h2 class="sec-title">Sites I've <span class="lime">Built</span></h2>
+      <p style="color:var(--gray); font-size:0.88rem; font-weight:300; max-width:420px; margin-top:0.5rem;">These are demo sites built across different industries to show exactly what your business could look like online. Click any to see the live version.</p>
+    </div>
+  </div>
   <div class="portfolio-grid">
-    <div class="portfolio-card">
-      <img src="https://image.pollinations.ai/prompt/roofing%20company%20website%20dark%20steel%20red%20accents%20hero%20section%20clean%20modern%20professional%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=111&nologo=true" alt="Roofing" class="portfolio-img"/>
-      <div class="portfolio-body">
-        <div class="portfolio-tag">Construction · Roofing</div>
-        <div class="portfolio-name">SteelRidge Roofing</div>
-        <p class="portfolio-desc">Bold industrial design for a roofing contractor. Quote request form, services, project gallery.</p>
-        <a href="https://bussiness-repo.isaacvobeck.workers.dev/" target="_blank" class="portfolio-link">View Study →</a>
+    <div class="port-card">
+      <div class="port-img-wrap">
+        <div class="port-live">Live Demo</div>
+        <img src="https://image.pollinations.ai/prompt/roofing%20company%20website%20dark%20steel%20red%20accents%20hero%20section%20clean%20modern%20professional%20no%20text%20no%20watermark?width=600&height=380&seed=111&nologo=true" alt="SteelRidge Roofing" class="port-img"/>
+      </div>
+      <div class="port-body">
+        <div class="port-niche">Construction · Roofing</div>
+        <div class="port-name">SteelRidge Roofing</div>
+        <p class="port-desc">Bold industrial design. Quote request form, services grid, project gallery, WhatsApp integration.</p>
+        <div class="port-tags">
+          <span class="port-tag">HTML/CSS</span>
+          <span class="port-tag">Cloudflare</span>
+          <span class="port-tag">Mobile-first</span>
+        </div>
+        <a href="https://steel-ridge-roofing.pages.dev" target="_blank" class="port-link">View Live Site →</a>
       </div>
     </div>
-    <div class="portfolio-card">
-      <img src="https://image.pollinations.ai/prompt/hardware%20shop%20website%20orange%20charcoal%20industrial%20design%20product%20categories%20clean%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=222&nologo=true" alt="Hardware" class="portfolio-img"/>
-      <div class="portfolio-body">
-        <div class="portfolio-tag">Retail · Hardware</div>
-        <div class="portfolio-name">BuildMart Hardware</div>
-        <p class="portfolio-desc">Product categories, delivery info, and quote request for a building materials supplier.</p>
-        <a href="https://business-temp1.isaacvobeck.workers.dev/" target="_blank" class="portfolio-link">View Study →</a>
+    <div class="port-card">
+      <div class="port-img-wrap">
+        <div class="port-live">Live Demo</div>
+        <img src="https://image.pollinations.ai/prompt/luxury%20safari%20company%20website%20dark%20gold%20accents%20elegant%20kenya%20travel%20hero%20no%20text%20no%20watermark?width=600&height=380&seed=444&nologo=true" alt="Savanna & Beyond" class="port-img"/>
+      </div>
+      <div class="port-body">
+        <div class="port-niche">Tourism · Safari</div>
+        <div class="port-name">Savanna & Beyond</div>
+        <p class="port-desc">Premium luxury safari site. Experiences, packages with pricing, gallery, destinations, booking form.</p>
+        <div class="port-tags">
+          <span class="port-tag">HTML/CSS</span>
+          <span class="port-tag">Parallax</span>
+          <span class="port-tag">AI Images</span>
+        </div>
+        <a href="https://savannah-beyond.isaacvobeck.workers.dev" target="_blank" class="port-link">View Live Site →</a>
       </div>
     </div>
-    <div class="portfolio-card">
-      <img src="https://image.pollinations.ai/prompt/medical%20clinic%20website%20teal%20mint%20clean%20soft%20healthcare%20design%20appointment%20booking%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=333&nologo=true" alt="Clinic" class="portfolio-img"/>
-      <div class="portfolio-body">
-        <div class="portfolio-tag">Healthcare · Clinic</div>
-        <div class="portfolio-name">MediCare Clinic</div>
-        <p class="portfolio-desc">Soft medical design with doctor profiles, services, and appointment booking form.</p>
-        <a href="https://business-repo2.isaacvobeck.workers.dev/" target="_blank" class="portfolio-link">View Study →</a>
+    <div class="port-card">
+      <div class="port-img-wrap">
+        <div class="port-live">Live Demo</div>
+        <img src="https://image.pollinations.ai/prompt/medical%20clinic%20website%20teal%20mint%20clean%20soft%20healthcare%20design%20no%20text%20no%20watermark?width=600&height=380&seed=333&nologo=true" alt="MediCare Clinic" class="port-img"/>
+      </div>
+      <div class="port-body">
+        <div class="port-niche">Healthcare · Clinic</div>
+        <div class="port-name">MediCare Clinic</div>
+        <p class="port-desc">Soft medical design. Doctor profiles, services, appointment booking, emergency line, pharmacy info.</p>
+        <div class="port-tags">
+          <span class="port-tag">HTML/CSS</span>
+          <span class="port-tag">Booking Form</span>
+          <span class="port-tag">NHIF Ready</span>
+        </div>
+        <a href="#" class="port-link">View Live Site →</a>
       </div>
     </div>
-    <div class="portfolio-card">
-      <img src="https://image.pollinations.ai/prompt/luxury%20safari%20website%20dark%20gold%20elegant%20kenya%20travel%20design%20hero%20section%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=444&nologo=true" alt="Safari" class="portfolio-img"/>
-      <div class="portfolio-body">
-        <div class="portfolio-tag">Tourism · Safari</div>
-        <div class="portfolio-name">Savanna & Beyond</div>
-        <p class="portfolio-desc">Premium luxury safari site with experiences, destinations, and direct booking enquiry form.</p>
-        <a href="https://savannah-beyond.isaacvobeck.workers.dev/" target="_blank" class="portfolio-link">View Study →</a>
+    <div class="port-card">
+      <div class="port-img-wrap">
+        <div class="port-live">Live Demo</div>
+        <img src="https://image.pollinations.ai/prompt/law%20firm%20website%20deep%20navy%20gold%20authoritative%20elegant%20legal%20design%20no%20text%20no%20watermark?width=600&height=380&seed=555&nologo=true" alt="Kariuki & Associates" class="port-img"/>
+      </div>
+      <div class="port-body">
+        <div class="port-niche">Legal · Law Firm</div>
+        <div class="port-name">Kariuki & Associates</div>
+        <p class="port-desc">Authoritative navy & gold. Practice areas, team profiles, track record, FAQ, consultation booking.</p>
+        <div class="port-tags">
+          <span class="port-tag">HTML/CSS</span>
+          <span class="port-tag">Scroll Reveal</span>
+          <span class="port-tag">Count-Up Stats</span>
+        </div>
+        <a href="#" class="port-link">View Live Site →</a>
       </div>
     </div>
-    <div class="portfolio-card">
-      <img src="https://image.pollinations.ai/prompt/law%20firm%20website%20deep%20navy%20gold%20authoritative%20elegant%20legal%20design%20modern%20web%20design%20no%20text%20no%20watermark?width=600&height=380&seed=555&nologo=true" alt="Law Firm" class="portfolio-img"/>
-      <div class="portfolio-body">
-        <div class="portfolio-tag">Legal · Law Firm</div>
-        <div class="portfolio-name">Kariuki & Associates</div>
-        <p class="portfolio-desc">Authoritative legal site with practice areas, team profiles, and consultation booking.</p>
-        <a href="https://law-firm.isaacvobeck.workers.dev/" target="_blank" class="portfolio-link">View Study →</a>
+    <div class="port-card">
+      <div class="port-img-wrap">
+        <div class="port-live">Live Demo</div>
+        <img src="https://image.pollinations.ai/prompt/hardware%20shop%20website%20orange%20charcoal%20industrial%20design%20product%20categories%20no%20text%20no%20watermark?width=600&height=380&seed=222&nologo=true" alt="BuildMart Hardware" class="port-img"/>
+      </div>
+      <div class="port-body">
+        <div class="port-niche">Retail · Hardware</div>
+        <div class="port-name">BuildMart Hardware</div>
+        <p class="port-desc">Heavy industrial feel. 8 product categories, delivery info, quote request form, M-Pesa ready.</p>
+        <div class="port-tags">
+          <span class="port-tag">HTML/CSS</span>
+          <span class="port-tag">Quote Form</span>
+          <span class="port-tag">M-Pesa</span>
+        </div>
+        <a href="#" class="port-link">View Live Site →</a>
       </div>
     </div>
-    <div class="portfolio-card" style="background: #0F0F0F; display:flex; align-items:center; justify-content:center; min-height:200px; flex-direction:column; gap:1rem; padding:2rem;">
-      <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--white); text-align:center;">Your Industry<br/>Could Be Next</div>
+    <div class="port-cta-card">
+      <p>Your Business<br/>Could Be Here</p>
+      <span>Every niche gets a fully custom design — not a template copy.</span>
       <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="btn-lime" style="font-size:0.8rem; padding:0.7rem 1.4rem;">Start a Project</a>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-label">How It Works</div>
-  <h2 class="section-title">From Zero to <span class="accent">Live</span><br/>in Less Than a Week</h2>
+<section class="process reveal" id="process">
+  <div class="sec-label">How It Works</div>
+  <h2 class="sec-title">Zero to <span class="lime">Live</span> in 5 Days</h2>
+  <p style="color:var(--gray); font-size:0.92rem; font-weight:300; line-height:1.8; max-width:480px; margin-top:0.8rem;">No technical knowledge needed on your side. You send me your details — I handle everything else.</p>
   <div class="process-grid">
     <div class="process-step">
-      <div class="process-step-num">01 / DISCOVERY</div>
-      <div class="process-step-title">We Talk on WhatsApp</div>
-      <p class="process-step-desc">You tell me about your business — your services, your customers, what you want the site to do. I ask 7 simple questions. No forms, no meetings needed.</p>
+      <div class="ps-num">01 · DISCOVERY</div>
+      <div class="ps-title">We Talk on WhatsApp</div>
+      <p class="ps-desc">You tell me about your business, your customers, and what you want the site to do. I ask 7 simple questions. No forms, no meetings, no wasted time.</p>
     </div>
     <div class="process-step">
-      <div class="process-step-num">02 / BUILD</div>
-      <div class="process-step-title">I Design & Code</div>
-      <p class="process-step-desc">I build your site from scratch in VS Code — custom design, your brand colours, your content. Not a drag and drop template. Clean hand-written code.</p>
+      <div class="ps-num">02 · BUILD</div>
+      <div class="ps-title">I Design & Code</div>
+      <p class="ps-desc">I build your site from scratch in VS Code — custom design, your colours, your content. Hand-written HTML and CSS. Not a drag-and-drop builder output.</p>
     </div>
     <div class="process-step">
-      <div class="process-step-num">03 / REVIEW</div>
-      <div class="process-step-title">You Check Everything</div>
-      <p class="process-step-desc">I send you a live preview link. You review every detail and request any changes. Nothing goes live until you're completely happy.</p>
+      <div class="ps-num">03 · REVIEW</div>
+      <div class="ps-title">You Check Everything</div>
+      <p class="ps-desc">I send you a live preview link. You review every page, every word, every button. Request changes. Nothing goes live until you're fully satisfied.</p>
     </div>
     <div class="process-step">
-      <div class="process-step-num">04 / LAUNCH</div>
-      <div class="process-step-title">Your Site Goes Live</div>
-      <p class="process-step-desc">We connect your .co.ke domain and deploy to Cloudflare. Your site is live, fast, and secure with a free SSL certificate. Customers can find you from day one.</p>
+      <div class="ps-num">04 · LAUNCH</div>
+      <div class="ps-title">Your Site Goes Live</div>
+      <p class="ps-desc">We connect your .co.ke domain on Safaricom and deploy to Cloudflare. Free SSL certificate. Fast globally. Customers find you from day one.</p>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-label">What's Included</div>
-  <h2 class="section-title">Everything You Need<br/><span class="accent">Nothing You Don't</span></h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">⚡</div>
-      <div class="service-title">Fast Custom Website</div>
-      <p class="service-desc">Hand-coded HTML and CSS — no bloated builders. Loads fast even on slow Kenyan connections.</p>
-      <div class="service-price">Included in every package</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📱</div>
-      <div class="service-title">Mobile Responsive</div>
-      <p class="service-desc">Looks perfect on every phone, tablet and desktop. Most of your customers are on mobile.</p>
-      <div class="service-price">Included in every package</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">💬</div>
-      <div class="service-title">WhatsApp Integration</div>
-      <p class="service-desc">One-tap WhatsApp buttons so visitors contact you instantly from any page on your site.</p>
-      <div class="service-price">Included in every package</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🌐</div>
-      <div class="service-title">Domain Setup Help</div>
-      <p class="service-desc">I guide you through getting your .co.ke domain and connecting it to your site.</p>
-      <div class="service-price">Included in every package</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔍</div>
-      <div class="service-title">Basic SEO</div>
-      <p class="service-desc">Page titles, meta descriptions, and structure optimised so Google can find and rank your site.</p>
-      <div class="service-price">Included in every package</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">✏️</div>
-      <div class="service-title">Post-Launch Edits</div>
-      <p class="service-desc">Need changes after launch? Edits are available at a small flat rate — no retainer required.</p>
-      <div class="service-price">From KES 500 per edit</div>
-    </div>
-  </div>
-</section>
-
-<!-- HONEST SECTION -->
-<section class="honest">
-  <div class="honest-grid">
-    <div class="honest-left">
-      <div class="section-label">Straight Talk</div>
-      <h2>What to Expect<br/>When You <span class="accent">Work With Me</span></h2>
-      <p>I'm building my portfolio and every project I take on gets my full attention. Here's what that means for you.</p>
-      <div class="honest-points">
-        <div class="honest-point">
-          <div class="hp-icon">✓</div>
-          <div class="hp-text">
-            <strong>No fake testimonials</strong>
-            <span>I don't pad my site with made-up reviews. My work speaks for itself — you can see it in my industry studies above.</span>
-          </div>
+<!-- SERVICES / PRICING -->
+<section class="services reveal" id="services">
+  <div class="sec-label">Pricing</div>
+  <h2 class="sec-title">Simple. <span class="lime">Flat Fee.</span> No Surprises.</h2>
+  <div style="height:3rem;"></div>
+  <div class="services-layout">
+    <div class="pricing-card">
+      <div class="pricing-header">
+        <div class="pricing-tag">Website Package</div>
+        <div class="pricing-name">Full Business Website</div>
+      </div>
+      <div class="pricing-body">
+        <div class="pricing-amount">
+          <span class="pricing-currency">KES</span>
+          <span class="pricing-number">14,000</span>
         </div>
-        <div class="honest-point">
-          <div class="hp-icon">✓</div>
-          <div class="hp-text">
-            <strong>Real hand-written code</strong>
-            <span>Every site is built from scratch in VS Code — not generated by a website builder or copied from a theme.</span>
-          </div>
+        <div class="pricing-note">One-time payment · Custom quotes for larger projects</div>
+        <ul class="pricing-features">
+          <li>Custom design built for your specific business</li>
+          <li>Mobile-friendly on all phones and tablets</li>
+          <li>WhatsApp button + contact form (Formspree)</li>
+          <li>Google SEO basics — titles, meta, structure</li>
+          <li>Domain setup guidance (.co.ke via Safaricom)</li>
+          <li>Deployed on Cloudflare — fast and free hosting</li>
+          <li>Free SSL certificate — the padlock on your site</li>
+          <li>30 days free support after launch</li>
+          <li>You own the code completely</li>
+        </ul>
+        <div class="pricing-edit-note">
+          <strong>Post-launch edits:</strong> Any changes after the 30-day support window are charged at a small flat rate per edit — no retainer, no subscription. KES 500–2,000 depending on the change.
         </div>
-        <div class="honest-point">
-          <div class="hp-icon">✓</div>
-          <div class="hp-text">
-            <strong>You own everything</strong>
-            <span>The code, the domain, the hosting — all yours. I hand it over completely when the project is done.</span>
-          </div>
-        </div>
-        <div class="honest-point">
-          <div class="hp-icon">✓</div>
-          <div class="hp-text">
-            <strong>One-time fee, no surprises</strong>
-            <span>KES 15,000–20,000 depending on scope. You know the price before we start. Nothing changes after.</span>
-          </div>
-        </div>
+        <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I'm%20interested%20in%20your%20website%20package." target="_blank" class="btn-lime" style="width:100%; text-align:center; margin-top:1.5rem; padding:1rem; justify-content:center;">Start on WhatsApp →</a>
+        <a href="https://contra.com/isaac_maina_w4uhc47q" target="_blank" class="btn-ghost" style="width:100%; text-align:center; margin-top:0.8rem; padding:0.85rem; display:block;">Hire via Contra ⚡</a>
       </div>
     </div>
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dot"></div>
-        <div class="code-dot"></div>
-        <div class="code-dot"></div>
-        <span class="code-filename">your-website.html</span>
+    <div class="services-right">
+      <div class="service-item">
+        <div class="si-icon">⚡</div>
+        <div>
+          <div class="si-title">Hand-Written Code</div>
+          <p class="si-desc">Every site is built from scratch in VS Code — HTML and CSS written by hand. No Wix, no WordPress, no bloated builders. Your site loads fast even on slow Kenyan mobile connections.</p>
+        </div>
       </div>
-      <div class="code-body">
-        <span class="code-line"><span class="code-comment">&lt;!-- Built for your business --&gt;</span></span>
-        <span class="code-line"><span class="code-tag">&lt;section</span> <span class="code-attr">class</span>=<span class="code-val">"hero"</span><span class="code-tag">&gt;</span></span>
-        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span><span class="code-lime">Your Business Name</span><span class="code-tag">&lt;/h1&gt;</span></span>
-        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Your services, your city<span class="code-tag">&lt;/p&gt;</span></span>
-        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;a</span> <span class="code-attr">href</span>=<span class="code-val">"https://wa.me/..."</span><span class="code-tag">&gt;</span></span>
-        <span class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-lime">Contact Us on WhatsApp</span></span>
-        <span class="code-line">&nbsp;&nbsp;<span class="code-tag">&lt;/a&gt;</span></span>
-        <span class="code-line"><span class="code-tag">&lt;/section&gt;</span></span>
-        <br/>
-        <span class="code-line"><span class="code-comment">&lt;!-- Hosted on Cloudflare --&gt;</span></span>
-        <span class="code-line"><span class="code-comment">&lt;!-- yourname.co.ke --&gt;</span></span>
-        <span class="code-line"><span class="code-comment">&lt;!-- Live in &lt; 5 days --&gt;</span></span>
+      <div class="service-item">
+        <div class="si-icon">📱</div>
+        <div>
+          <div class="si-title">Mobile-First Always</div>
+          <p class="si-desc">Over 80% of your customers browse on phones. Every site I build is tested on mobile first — looks perfect on any screen, any device, any browser.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="si-icon">🌐</div>
+        <div>
+          <div class="si-title">Domain & Hosting Setup</div>
+          <p class="si-desc">I guide you through getting your .co.ke domain on Safaricom (KES 1,300/year, M-Pesa payment). I handle the Cloudflare connection — zero technical knowledge required from you.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="si-icon">💬</div>
+        <div>
+          <div class="si-title">WhatsApp Integration</div>
+          <p class="si-desc">Every site gets a WhatsApp button so visitors contact you in one tap. For bigger enquiries, a Formspree contact form delivers submissions straight to your email.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="si-icon">🔧</div>
+        <div>
+          <div class="si-title">Post-Launch Support</div>
+          <p class="si-desc">30 days of free support after launch for minor fixes. After that, edits are a small flat rate — no retainer, no lock-in. You're never stuck paying monthly just to keep your site alive.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<div class="cta">
-  <h2>Ready to Get Your Business Online?</h2>
+<div class="cta reveal">
+  <div class="cta-left">
+    <h2>Ready to Get Your Business Online?</h2>
+  </div>
   <div class="cta-buttons">
-    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services.%20Can%20we%20talk?" target="_blank" class="btn-black">💬 WhatsApp Me Now</a>
-    <a href="mailto:isaac@isaacwebs.co.ke?subject=Website%20Project%20Inquiry" class="btn-outline-black">✉️ Email Me</a>
+    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="btn-black">💬 WhatsApp Me Now</a>
+    <a href="https://contra.com/isaac_maina_w4uhc47q" target="_blank" class="btn-contra">⚡ Hire on Contra</a>
   </div>
 </div>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-label">Get In Touch</div>
-  <h2 class="section-title">Let's Build<br/><span class="accent">Something Great</span></h2>
-  <div class="contact-wrap">
+<section class="contact reveal" id="contact">
+  <div class="sec-label">Get In Touch</div>
+  <h2 class="sec-title">Let's Build <span class="lime">Something Real</span></h2>
+  <div style="height:3rem;"></div>
+  <div class="contact-layout">
     <div class="contact-left">
-      <h3>Start the conversation</h3>
-      <p>Tell me about your business and what you need. I'll come back to you within a few hours with a clear plan and price. No fluff, no sales pitch.</p>
+      <h3>Two ways to reach me</h3>
+      <p>Quick question or ready to start? WhatsApp is fastest. Have a bigger project or prefer email? Use the form — I respond within 24 hours.</p>
       <div class="contact-detail">
         <div class="cd-icon">💬</div>
         <div>
-          <div class="cd-label">WhatsApp</div>
+          <div class="cd-label">WhatsApp · Fastest</div>
           <div class="cd-value">+254 115 410 525</div>
         </div>
       </div>
@@ -1210,26 +1674,35 @@
         <div class="cd-icon">📍</div>
         <div>
           <div class="cd-label">Based In</div>
-          <div class="cd-value">Nakuru, Kenya</div>
+          <div class="cd-value">Nakuru, Kenya · Remote-first</div>
         </div>
       </div>
       <div class="contact-detail">
-        <div class="cd-icon">🌐</div>
+        <div class="cd-icon">⚡</div>
         <div>
-          <div class="cd-label">LinkedIn</div>
-          <div class="cd-value">isaac-mwaura-8597b740b</div>
+          <div class="cd-label">Also on Contra</div>
+          <div class="cd-value">contra.com/isaac_maina_w4uhc47q</div>
+        </div>
+      </div>
+      <div class="contact-cta-split">
+        <div>
+          <div class="cta-split-label">For quick chats & local clients</div>
+          <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20want%20to%20discuss%20a%20website." target="_blank" class="btn-lime" style="display:inline-flex; margin-top:0.5rem;">💬 Open WhatsApp</a>
+        </div>
+        <div>
+          <div class="cta-split-label">For international & structured projects</div>
+          <a href="https://contra.com/isaac_maina_w4uhc47q" target="_blank" class="btn-ghost" style="display:inline-block; margin-top:0.5rem;">⚡ Hire on Contra</a>
         </div>
       </div>
     </div>
-    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="a98b03d6-ba66-4894-ba9f-dd426d4c0ecb"/>
-      <input type="hidden" name="redirect" value="https://isaacwebs.co.ke/thank-you.html"/>
+    <form class="contact-form" action="https://formspree.io/f/xykqjzdg" method="POST">
       <h3>Send a Message</h3>
+      <p>For larger project enquiries — fill this in and I'll come back to you within 24 hours.</p>
       <div class="form-row">
-        <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Kamau" required/></div>
-        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+254 700 000 000" required/></div>
+        <div class="fg"><label>Your Name</label><input type="text" name="name" placeholder="John Kamau" required/></div>
+        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="0712 000 000" required/></div>
       </div>
-      <div class="form-group">
+      <div class="fg">
         <label>Your Business Type</label>
         <select name="business_type">
           <option>Select your industry...</option>
@@ -1244,7 +1717,7 @@
           <option>Other</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="fg">
         <label>What Do You Need?</label>
         <select name="project_type">
           <option>Select...</option>
@@ -1254,11 +1727,11 @@
           <option>Not sure yet</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="fg">
         <label>Tell Me More</label>
         <textarea name="message" placeholder="Brief description of your business and what you want the site to do..."></textarea>
       </div>
-      <button type="submit" class="btn-lime" style="width:100%; padding:1rem; font-size:0.88rem; border-radius:4px;">Send Message</button>
+      <button type="submit" class="btn-lime" style="width:100%; padding:1rem; justify-content:center; border-radius:4px;">Send Message →</button>
     </form>
   </div>
 </section>
@@ -1266,22 +1739,45 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <div class="footer-logo">Isaac<span>Webs</span></div>
+    <div>
+      <div class="footer-logo">Isaac<span>Webs</span></div>
+      <div class="footer-tagline">Custom websites · Nakuru, Kenya · Remote-first</div>
+    </div>
     <ul class="footer-links">
+      <li><a href="#about">About</a></li>
       <li><a href="#portfolio">Work</a></li>
       <li><a href="#process">Process</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#services">Pricing</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank">LinkedIn</a></li>
     </ul>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/isaac-mwaura-8597b740b" target="_blank" class="footer-social" title="LinkedIn">💼</a>
+      <a href="https://www.tiktok.com/@isaacwebs" target="_blank" class="footer-social" title="TikTok">🎵</a>
+      <a href="https://contra.com/isaac_maina_w4uhc47q" target="_blank" class="footer-social" title="Contra">⚡</a>
+      <a href="https://wa.me/254115410525" target="_blank" class="footer-social" title="WhatsApp">💬</a>
+    </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Isaac Webs. Web Design · Nakuru, Kenya.</p>
-    <p class="footer-tech">Built with <span>HTML · CSS · Cloudflare</span></p>
+    <p class="footer-copy">© 2026 IsaacWebs. Built with <span>HTML · CSS · Cloudflare</span> · Nakuru, Kenya.</p>
+    <p class="footer-copy">isaac@isaacwebs.co.ke · +254 115 410 525</p>
   </div>
 </footer>
 
 <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="wa-float">💬</a>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
