@@ -1269,6 +1269,18 @@
       .trust-items { gap: 1rem; }
       .footer-top { flex-direction: column; align-items: flex-start; }
     }
+
+    /* Intake modal */
+    .intake-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 400;
+    }
+    .intake-modal {
+      width: 92%; max-width: 1000px; height: 86vh; background: var(--black2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display:flex; flex-direction:column;
+    }
+    .intake-modal-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0.8rem 1rem; background:var(--card); border-bottom:1px solid var(--border); }
+    .intake-modal iframe { border:0; width:100%; height:100%; }
+    .intake-close { background:transparent; border:1px solid var(--border); color:var(--gray); padding:0.4rem 0.6rem; border-radius:4px; cursor:pointer; }
+    .intake-open-button { background: transparent; color: var(--black); border: 2px solid var(--black); }
   </style>
 </head>
 <body>
@@ -1305,11 +1317,12 @@
     <div class="nav-logo">Isaac<span>Webs</span></div>
     <div class="nav-status">Taking new projects</div>
   </div>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Work</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#services">Pricing</a></li>
+    <li><a href="#apply" id="nav-apply">Apply</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="nav-cta">💬 Start a Project</a></li>
   </ul>
@@ -1664,6 +1677,51 @@
 </div>
 
 <!-- CONTACT -->
+<!-- APPLY / INTAKE -->
+<section class="contact reveal" id="apply">
+  <div class="sec-label">Client Intake</div>
+  <h2 class="sec-title">Apply for an <span class="lime">Intake Form</span></h2>
+  <p style="color:var(--gray); font-size:0.92rem; font-weight:300; line-height:1.8; max-width:480px; margin-top:0.8rem;">Fill the quick intake below, open the full hosted intake, or download a copy of your answers for your records.</p>
+  <div style="height:2rem;"></div>
+  <div class="contact-layout">
+    <div style="max-width:520px;">
+      <p style="color:var(--gray); font-size:0.9rem; line-height:1.6;">Prefer the hosted form? Use the button to open it in a new tab. Otherwise complete the quick form and download a copy before submitting.</p>
+      <div style="margin-top:1rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
+        <a href="https://intake-form.isaacvobeck.workers.dev" target="_blank" class="btn-lime" style="text-decoration:none;">Open Hosted Intake Form →</a>
+        <a href="https://intake-form.isaacvobeck.workers.dev" target="_blank" class="btn-ghost" style="text-decoration:none;">Open in New Tab</a>
+      </div>
+    </div>
+
+    <form id="intake-form" class="contact-form" action="https://intake-form.isaacvobeck.workers.dev" method="GET" target="_blank">
+      <h3>Quick Intake (download a copy)</h3>
+      <p style="color:var(--gray); font-size:0.8rem; font-weight:300; margin-bottom:0.5rem;">This quick form sends you to the hosted intake and lets you download your answers locally.</p>
+      <div class="form-row">
+        <div class="fg"><label>Your Name</label><input type="text" name="name" placeholder="Jane Mwangi" required/></div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required/></div>
+      </div>
+      <div class="fg"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="07xx xxx xxx" required/></div>
+      <div class="fg"><label>Business Type</label>
+        <select name="business_type">
+          <option value="">Select your industry...</option>
+          <option>Roofing / Construction</option>
+          <option>Hardware / Building Materials</option>
+          <option>Clinic / Pharmacy</option>
+          <option>Safari / Tours</option>
+          <option>Law Firm</option>
+          <option>Hotel / Lodge</option>
+          <option>Restaurant / Café</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Brief Description</label><textarea name="message" placeholder="Describe your business and what you want the site to do..."></textarea></div>
+      <div style="display:flex; gap:0.6rem;">
+        <button type="button" class="btn-ghost" onclick="downloadIntakeCopy('intake-form')">⬇️ Download Copy</button>
+        <button type="submit" class="btn-lime">Open Full Intake →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
 <section class="contact reveal" id="contact">
   <div class="sec-label">Get In Touch</div>
   <h2 class="sec-title">Let's Build <span class="lime">Something Real</span></h2>
@@ -1794,6 +1852,20 @@
 
 <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="wa-float">💬</a>
 
+<!-- Intake modal overlay (lazy-loads hosted form) -->
+<div id="intake-overlay" class="intake-modal-overlay" aria-hidden="true">
+  <div class="intake-modal" role="dialog" aria-modal="true" aria-label="Intake form">
+    <div class="intake-modal-header">
+      <div style="font-family:'Syne',sans-serif; font-weight:700; color:var(--white);">Client Intake</div>
+      <div style="display:flex; gap:0.6rem;">
+        <a href="https://intake-form.isaacvobeck.workers.dev" target="_blank" class="btn-ghost" style="text-decoration:none;">Open in New Tab</a>
+        <button id="intake-close" class="intake-close">Close</button>
+      </div>
+    </div>
+    <iframe id="intake-iframe" src="about:blank" title="Hosted intake form"></iframe>
+  </div>
+</div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -1806,6 +1878,76 @@
     });
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
+
+  // Download a local copy of the intake form data as JSON
+  function downloadIntakeCopy(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const data = {};
+    new FormData(form).forEach((value, key) => {
+      data[key] = value;
+    });
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const name = (data.name || 'intake').replace(/\s+/g, '_');
+    a.href = url;
+    a.download = `${name}_intake.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  // Intake modal: open lazy-loaded iframe
+  (function(){
+    const OVERLAY = document.getElementById('intake-overlay');
+    const IFRAME = document.getElementById('intake-iframe');
+    const CLOSE = document.getElementById('intake-close');
+    const HOSTED = 'https://intake-form.isaacvobeck.workers.dev';
+
+    function openIntake() {
+      if (IFRAME && IFRAME.src === 'about:blank') IFRAME.src = HOSTED;
+      OVERLAY.style.display = 'flex';
+      OVERLAY.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeIntake() {
+      OVERLAY.style.display = 'none';
+      OVERLAY.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // wire buttons and nav
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && (t.id === 'open-intake' || t.closest && t.closest('#open-intake')) ) { e.preventDefault(); openIntake(); }
+    });
+
+    const navApply = document.getElementById('nav-apply');
+    if (navApply) navApply.addEventListener('click', (e)=>{ e.preventDefault(); openIntake(); });
+
+    const ctaButton = document.querySelector('.cta .btn-black');
+    if (ctaButton) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn-contra';
+      btn.style.cursor = 'pointer';
+      btn.textContent = 'Apply Now';
+      btn.addEventListener('click', openIntake);
+      ctaButton.insertAdjacentElement('afterend', btn);
+    }
+
+    const contactOpeners = document.querySelectorAll('.contact-cta-split a, #intake-form button[type="submit"]');
+    contactOpeners.forEach(el => {
+      // keep existing behavior but add modal opener on some links
+    });
+
+    if (CLOSE) CLOSE.addEventListener('click', closeIntake);
+    OVERLAY.addEventListener('click', (e)=>{ if (e.target === OVERLAY) closeIntake(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeIntake(); });
+  })();
 </script>
 
 </body>
