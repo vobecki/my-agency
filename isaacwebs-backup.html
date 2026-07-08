@@ -3,23 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IsaacWebs | Custom Websites for Kenyan Businesses — No Monthly Fees</title>
-  <meta name="description" content="Custom websites for Kenyan businesses. One-time fee from KES 14,000. No monthly charges. Live in 5 days."/>
-  <meta name="keywords" content="web design Kenya, website development Nakuru, affordable websites Kenya"/>
-  <meta name="robots" content="index, follow"/>
-  <meta property="og:title" content="IsaacWebs | Custom Websites for Kenyan Businesses"/>
-  <meta property="og:description" content="Custom websites from KES 14,000. No monthly fees. Live in 5 days."/>
-  <meta property="og:image" content="https://isaacwebs.co.ke/og-image.jpg"/>
-  <link rel="icon" type="image/png" href="/favicon.ico"/>
+  <title>IsaacWebs | Custom Websites for Kenyan Businesses</title>
+  <meta name="description" content="IsaacWebs builds custom, fast-loading websites for small businesses in Kenya and beyond. One-time fee. No monthly charges. Live in 5 days."/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRFHX3HGQN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-KRFHX3HGQN');
-  </script>
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -39,8 +25,6 @@
     }
 
     html { scroll-behavior: smooth; }
-
-    img { max-width:100%; height:auto; display:block; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -158,47 +142,6 @@
       font-size: 0.78rem !important;
       border-radius: 4px;
       letter-spacing: 0.02em;
-    }
-
-    .hamburger {
-      display:none;
-      flex-direction:column;
-      gap:5px;
-      background:transparent;
-      border:none;
-      cursor:pointer;
-      padding:4px;
-    }
-
-    .hamburger span {
-      display:block;
-      width:25px;
-      height:2px;
-      background:var(--white);
-      transition:all 0.3s ease;
-    }
-
-    .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-    .hamburger.active span:nth-child(2) { opacity:0; }
-    .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
-
-    .photo-frame { background:var(--card); min-height:300px; }
-
-    @media (max-width:768px) {
-      .hamburger { display:flex; }
-      .nav-links {
-        display:none !important;
-        position:fixed;
-        top:0;left:0;right:0;bottom:0;
-        background:var(--black);
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        gap:2rem;
-        z-index:100;
-      }
-      .nav-links.open { display:flex !important; }
-      .nav-links a { font-size:1.2rem; color:var(--white); }
     }
 
     /* ── HERO ── */
@@ -1374,15 +1317,12 @@
     <div class="nav-logo">Isaac<span>Webs</span></div>
     <div class="nav-status">Taking new projects</div>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Work</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#services">Pricing</a></li>
-    <li><a href="https://intake-form.isaacvobeck.workers.dev" target="_blank">Apply</a></li>
+    <li><a href="#apply" id="nav-apply">Apply</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20would%20like%20to%20discuss%20my%20website%20project." target="_blank" class="nav-cta">💬 Start a Project</a></li>
   </ul>
@@ -1420,7 +1360,7 @@
   <div class="hero-right">
     <div class="photo-card">
       <div class="photo-frame">
-        <img src="/image-2.jpg" alt="Isaac — IsaacWebs founder working at his desk in Nakuru, Kenya" loading="lazy" decoding="async" width="420" height="525"/>
+        <img src="image-2.jpg" alt="Isaac — IsaacWebs founder working at his desk in Nakuru, Kenya"/>
       </div>
       <div class="photo-badge photo-badge-1">
         <div class="pb-icon">⚡</div>
@@ -1870,17 +1810,6 @@
   </div>
 </section>
 
-<section class="testimonials reveal" style="padding:4rem 5%;background:var(--black2);border-top:1px solid var(--border);">
-  <div class="sec-label">Client Voices</div>
-  <h2 class="sec-title">Real <span class="lime">Testimonials</span> Coming Soon</h2>
-  <div class="about-honest" style="max-width:600px;margin-top:1.5rem;">
-    <p><strong>Building trust, one project at a time.</strong> I'm actively working with clients and will share their real feedback here as we complete projects. Every testimonial you see will be 100% genuine.</p>
-  </div>
-  <div style="margin-top:2rem;">
-    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20want%20to%20be%20one%20of%20your%20first%20clients." target="_blank" class="btn-lime">Be One of My First Clients →</a>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -1923,6 +1852,20 @@
 
 <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20am%20interested%20in%20your%20website%20services." target="_blank" class="wa-float">💬</a>
 
+<!-- Intake modal overlay (lazy-loads hosted form) -->
+<div id="intake-overlay" class="intake-modal-overlay" aria-hidden="true">
+  <div class="intake-modal" role="dialog" aria-modal="true" aria-label="Intake form">
+    <div class="intake-modal-header">
+      <div style="font-family:'Syne',sans-serif; font-weight:700; color:var(--white);">Client Intake</div>
+      <div style="display:flex; gap:0.6rem;">
+        <a href="https://intake-form.isaacvobeck.workers.dev" target="_blank" class="btn-ghost" style="text-decoration:none;">Open in New Tab</a>
+        <button id="intake-close" class="intake-close">Close</button>
+      </div>
+    </div>
+    <iframe id="intake-iframe" src="about:blank" title="Hosted intake form"></iframe>
+  </div>
+</div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -1956,26 +1899,55 @@
     URL.revokeObjectURL(url);
   }
 
-  document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-    link.setAttribute('onclick', "gtag('event', 'whatsapp_click', {'event_category': 'Contact'});");
-  });
+  // Intake modal: open lazy-loaded iframe
+  (function(){
+    const OVERLAY = document.getElementById('intake-overlay');
+    const IFRAME = document.getElementById('intake-iframe');
+    const CLOSE = document.getElementById('intake-close');
+    const HOSTED = 'https://intake-form.isaacvobeck.workers.dev';
 
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', function(){
-      this.classList.toggle('active');
-      navLinks.classList.toggle('open');
-      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    function openIntake() {
+      if (IFRAME && IFRAME.src === 'about:blank') IFRAME.src = HOSTED;
+      OVERLAY.style.display = 'flex';
+      OVERLAY.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeIntake() {
+      OVERLAY.style.display = 'none';
+      OVERLAY.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // wire buttons and nav
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && (t.id === 'open-intake' || t.closest && t.closest('#open-intake')) ) { e.preventDefault(); openIntake(); }
     });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+
+    const navApply = document.getElementById('nav-apply');
+    if (navApply) navApply.addEventListener('click', (e)=>{ e.preventDefault(); openIntake(); });
+
+    const ctaButton = document.querySelector('.cta .btn-black');
+    if (ctaButton) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn-contra';
+      btn.style.cursor = 'pointer';
+      btn.textContent = 'Apply Now';
+      btn.addEventListener('click', openIntake);
+      ctaButton.insertAdjacentElement('afterend', btn);
+    }
+
+    const contactOpeners = document.querySelectorAll('.contact-cta-split a, #intake-form button[type="submit"]');
+    contactOpeners.forEach(el => {
+      // keep existing behavior but add modal opener on some links
     });
-  }
+
+    if (CLOSE) CLOSE.addEventListener('click', closeIntake);
+    OVERLAY.addEventListener('click', (e)=>{ if (e.target === OVERLAY) closeIntake(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeIntake(); });
+  })();
 </script>
 
 </body>
