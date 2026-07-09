@@ -849,6 +849,7 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       overflow: hidden;
+      position: relative;
     }
 
     .pricing-header {
@@ -876,11 +877,44 @@
 
     .pricing-body { padding: 2rem 2.5rem; }
 
+    .pricing-sale-badge {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      background: var(--black);
+      color: var(--lime);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.7rem;
+      border-radius: 20px;
+      border: 1px solid rgba(200,240,76,0.4);
+      z-index: 2;
+    }
+
     .pricing-amount {
       display: flex;
       align-items: baseline;
-      gap: 0.3rem;
+      gap: 0.6rem;
+      flex-wrap: wrap;
       margin-bottom: 0.3rem;
+    }
+
+    .pricing-old-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    .pricing-old {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gray2);
+      text-decoration: line-through;
+      text-decoration-color: #7A3B3B;
+      letter-spacing: -0.02em;
     }
 
     .pricing-currency {
@@ -899,11 +933,24 @@
       line-height: 1;
     }
 
+    .pricing-save {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--black);
+      background: var(--lime);
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
     .pricing-note {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.62rem;
       color: var(--gray);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       letter-spacing: 0.04em;
     }
 
@@ -1669,15 +1716,21 @@
   <div style="height:3rem;"></div>
   <div class="services-layout">
     <div class="pricing-card">
+      <div class="pricing-sale-badge">🔥 LAUNCH PRICING</div>
       <div class="pricing-header">
         <div class="pricing-tag">Website Package</div>
         <div class="pricing-name">Full Business Website</div>
       </div>
       <div class="pricing-body">
         <div class="pricing-amount">
+          <div class="pricing-old-wrap">
+            <span class="pricing-currency" style="color:var(--gray2);">KES</span>
+            <span class="pricing-old">14,000</span>
+          </div>
           <span class="pricing-currency">KES</span>
-          <span class="pricing-number">14,000</span>
+          <span class="pricing-number">9,000</span>
         </div>
+        <div class="pricing-save">Save KES 5,000 · First clients only</div>
         <div class="pricing-note">One-time payment · Custom quotes for larger projects</div>
         <ul class="pricing-features">
           <li>Custom design built for your specific business</li>
@@ -1991,4 +2044,3 @@
 
 </body>
 </html>
-```
