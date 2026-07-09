@@ -1032,9 +1032,131 @@
 
     /* ── TESTIMONIALS ── */
     .testimonials {
-      padding: 4rem 5%;
+      padding: 6rem 5%;
       background: var(--black2);
       border-top: 1px solid var(--border);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 3rem;
+      align-items: stretch;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-quote-mark {
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--lime);
+      line-height: 1;
+      opacity: 0.35;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 1.05rem;
+      color: var(--cream);
+      line-height: 1.75;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-rating {
+      color: var(--lime);
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-person {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonial-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--lime);
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .testimonial-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      margin-top: 0.15rem;
+    }
+
+    .testimonial-photo-frame {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+    }
+
+    .testimonial-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .testimonial-photo-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background: rgba(10,10,10,0.85);
+      border: 1px solid rgba(200,240,76,0.3);
+      border-radius: 20px;
+      padding: 0.35rem 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .testimonial-photo-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--lime);
+      border-radius: 50%;
     }
 
     /* ── CTA ── */
@@ -1391,6 +1513,8 @@
       .form-row { grid-template-columns: 1fr; }
       .trust-items { gap: 1rem; }
       .footer-top { flex-direction: column; align-items: flex-start; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .testimonial-photo-frame { min-height: 220px; }
     }
 
     @media (max-width: 1024px) {
@@ -1937,12 +2061,26 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials reveal">
   <div class="sec-label">Client Voices</div>
-  <h2 class="sec-title">Real <span class="lime">Testimonials</span> Coming Soon</h2>
-  <div class="about-honest" style="max-width:600px; margin-top:1.5rem;">
-    <p><strong>Building trust, one project at a time.</strong> I'm actively working with clients and will share their real feedback here as we complete projects. Every testimonial you see will be 100% genuine — from real business owners I've helped get online.</p>
-  </div>
-  <div style="margin-top:2rem;">
-    <a href="https://wa.me/254115410525?text=Hello%20Isaac,%20I%20want%20to%20be%20one%20of%20your%20first%20clients." target="_blank" class="btn-lime" onclick="gtag('event', 'whatsapp_click', {'event_category': 'Contact', 'event_label': 'Testimonials CTA'});">Be One of My First Clients →</a>
+  <h2 class="sec-title">Real <span class="lime">Testimonials</span></h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-photo-frame">
+      <img src="/testimonial-joseph.jpg" alt="Joseph S. — client, photo editing business, Nairobi" loading="lazy" decoding="async"/>
+      <div class="testimonial-photo-badge">Verified Client</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote-mark">"</div>
+      <div class="testimonial-rating">★★★★☆ <span style="font-size:0.65rem; color:var(--gray); font-family:'JetBrains Mono',monospace; letter-spacing:0.04em; vertical-align:middle;">4.5 / 5</span></div>
+      <p class="testimonial-text">Smooth process, clear communication, and the final site looked modern and professional. Would recommend without hesitation.</p>
+      <div class="testimonial-person">
+        <div class="testimonial-avatar">
+          <img src="/testimonial-joseph.jpg" alt="Joseph S."/>
+        </div>
+        <div>
+          <div class="testimonial-name">Joseph S.</div>
+          <div class="testimonial-meta">Photo Editing Business · Nairobi · +254 701 015 044</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
