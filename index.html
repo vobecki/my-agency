@@ -42,8 +42,9 @@
   <!-- ===== GOOGLE FONTS ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-  <!-- ===== GOOGLE MAPS API ===== -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=marker"></script>
+  <!-- ===== LEAFLET MAPS (FREE, NO API KEY NEEDED) ===== -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1585,6 +1586,22 @@
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .process-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* Leaflet map dark mode overrides */
+    .leaflet-popup-content-wrapper {
+      background: #1a1a1a !important;
+      color: #f0ebe1 !important;
+      border-radius: 6px !important;
+    }
+    .leaflet-popup-content {
+      color: #f0ebe1 !important;
+    }
+    .leaflet-popup-tip {
+      background: #1a1a1a !important;
+    }
+    .leaflet-popup-content a {
+      color: #c8f04c !important;
+    }
   </style>
 </head>
 <body>
@@ -2269,133 +2286,59 @@
     });
   }
 
-  // Initialize Google Map
+  // ===== LEAFLET MAP INITIALIZATION =====
   function initServiceMap() {
     const mapContainer = document.getElementById('service-map');
     if (!mapContainer) return;
 
     // Center between Nakuru and Nairobi
-    const centerPoint = { lat: -0.7275, lng: 36.4412 };
+    const map = L.map('service-map').setView([-0.7275, 36.4412], 8);
 
-    const map = new google.maps.Map(mapContainer, {
-      zoom: 8,
-      center: centerPoint,
-      styles: [
-        {
-          "elementType": "geometry",
-          "stylers": [{ "color": "#111111" }]
-        },
-        {
-          "elementType": "labels.text.stroke",
-          "stylers": [{ "color": "#111111" }]
-        },
-        {
-          "elementType": "labels.text.fill",
-          "stylers": [{ "color": "#f0ebe1" }]
-        },
-        {
-          "featureType": "administrative.locality",
-          "elementType": "labels.text.fill",
-          "stylers": [{ "color": "#c8f04c" }]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [{ "color": "#888888" }]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "geometry.fill",
-          "stylers": [{ "color": "#1c1c1c" }]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry.fill",
-          "stylers": [{ "color": "#242424" }]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry.stroke",
-          "stylers": [{ "color": "#1a1a1a" }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry.fill",
-          "stylers": [{ "color": "#2a2a2a" }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [{ "color": "#1a1a1a" }]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "geometry",
-          "stylers": [{ "color": "#1c1c1c" }]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry.fill",
-          "stylers": [{ "color": "#0d0d0d" }]
-        }
-      ]
+    // Dark map tiles to match the site theme
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; CartoDB',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Nakuru marker with custom icon
+    const nakuruIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div style="background:#C8F04C; width:18px; height:18px; border-radius:50%; border:3px solid white; box-shadow:0 0 20px rgba(200,240,76,0.5);"></div>',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9]
     });
 
-    // Nakuru marker
-    const nakuruMarker = new google.maps.Marker({
-      position: { lat: -0.3031, lng: 36.0654 },
-      map: map,
-      title: 'Nakuru - Home Base',
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 12,
-        fillColor: '#C8F04C',
-        fillOpacity: 1,
-        strokeColor: '#ffffff',
-        strokeWeight: 2
-      }
+    const nakuruMarker = L.marker([-0.3031, 36.0654], { icon: nakuruIcon })
+      .addTo(map)
+      .bindPopup(`
+        <strong style="color:#C8F04C;">🏠 Nakuru</strong><br>
+        <span style="color:#f0ebe1;">Home base · Primary workspace</span><br>
+        <span style="color:#888; font-size:0.8rem;">-0.3031° S, 36.0654° E</span>
+      `);
+
+    // Nairobi marker with custom icon
+    const nairobiIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div style="background:#C8F04C; width:18px; height:18px; border-radius:50%; border:3px solid white; box-shadow:0 0 20px rgba(200,240,76,0.3); opacity:0.8;"></div>',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9]
     });
 
-    // Nairobi marker
-    const nairobiMarker = new google.maps.Marker({
-      position: { lat: -1.2864, lng: 36.8172 },
-      map: map,
-      title: 'Nairobi - Service Area',
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 12,
-        fillColor: '#C8F04C',
-        fillOpacity: 0.7,
-        strokeColor: '#ffffff',
-        strokeWeight: 2
-      }
-    });
+    const nairobiMarker = L.marker([-1.2864, 36.8172], { icon: nairobiIcon })
+      .addTo(map)
+      .bindPopup(`
+        <strong style="color:#C8F04C;">🌆 Nairobi</strong><br>
+        <span style="color:#f0ebe1;">Major service area</span><br>
+        <span style="color:#888; font-size:0.8rem;">-1.2864° S, 36.8172° E</span>
+      `);
 
-    // Info window for Nakuru
-    const nakuruInfo = new google.maps.InfoWindow({
-      content: '<div style="color:#0a0a0a; font-family:DM Sans,sans-serif; padding:8px;"><strong>🏠 Nakuru</strong><br/>Home base · Primary workspace<br/>-0.3031° S, 36.0654° E</div>'
-    });
-
-    // Info window for Nairobi
-    const nairobiInfo = new google.maps.InfoWindow({
-      content: '<div style="color:#0a0a0a; font-family:DM Sans,sans-serif; padding:8px;"><strong>🌆 Nairobi</strong><br/>Major service area<br/>-1.2864° S, 36.8172° E</div>'
-    });
-
-    nakuruMarker.addListener('click', () => {
-      nairobiInfo.close();
-      nakuruInfo.open(map, nakuruMarker);
-    });
-
-    nairobiMarker.addListener('click', () => {
-      nakuruInfo.close();
-      nairobiInfo.open(map, nairobiMarker);
-    });
-
-    // Auto-open Nakuru info on load
-    nakuruInfo.open(map, nakuruMarker);
+    // Auto-open Nakuru popup on load
+    setTimeout(() => {
+      nakuruMarker.openPopup();
+    }, 500);
   }
 
-  // Load map when page loads
+  // Initialize map when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initServiceMap);
   } else {
